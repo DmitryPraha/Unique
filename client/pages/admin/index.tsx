@@ -10,7 +10,6 @@ export default function Admin() {
         <title>Админ панель</title>
         <script type="text/javascript" src="/styles/choices.min.js"></script>
         <script type="text/javascript" src="/styles/main.js"></script>
-        >
         <script type="text/javascript" src="/../public/styles/custom-switcher.min.js"></script>
         <script type="text/javascript" src="/styles/pickr.es5.min.js"></script>
         <script type="text/javascript" src="/styles/simplebar.js"></script>

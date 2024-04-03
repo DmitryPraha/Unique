@@ -26,7 +26,7 @@ let TrackService = class TrackService {
         return track;
     }
     async getAll(count = 10, offset = 0) {
-        const tracks = this.tracksRepository.find();
+        const tracks = await this.tracksRepository.find();
         return tracks;
     }
     async getOne(id) {

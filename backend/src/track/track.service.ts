@@ -21,8 +21,9 @@ export class TrackService{
         return track;
     }
 
+
     async getAll(count = 10 , offset = 0): Promise<Track[][]>{
-        const tracks = this.tracksRepository.find();
+        const tracks = await this.tracksRepository.find();
         return tracks;
         //Возвращение всех записей
     }

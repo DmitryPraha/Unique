@@ -25,138 +25,50 @@ export default function Home() {
 
            <div className="landing-body">
            <div className="landing-page-wrapper">
-               <div className="app-header">
-                   <div className="main-header-container container-fluid">
-                       <div className="header-content-left">
-                           <div className="header-element">
-                               <div className="horizontal-logo">
-                                   <a href="/" className="header-logo">
 
-                                   </a>
-                               </div>
+
+               <nav className="navbar fixed-top">
+                   <div className="container-fluid">
+                       <a className="navbar-brand text-white lead" href="#">Findler</a>
+                       <button className="navbar-toggler btn-lg" type="button" data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                               aria-label="Toggle navigation">
+                           <span className="navbar-toggler-icon"></span>
+                       </button>
+                       <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar"
+                            aria-labelledby="offcanvasNavbarLabel">
+                           <div className="offcanvas-header">
+                               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Меню навигации</h5>
+                               <button type="button" className="btn-close" data-bs-dismiss="offcanvas"
+                                       aria-label="Close"></button>
                            </div>
-                           <div className="header-element">
-                               <a href="javascript:void(0);" className="sidemenu-toggle header-link"
-                                  data-bs-toggle="sidebar">
-                            <span className="open-toggle">
-                                <i className="ri-menu-3-line fs-20"></i>
-                            </span>
-                               </a>
-                           </div>
-                       </div>
-                       <div className="header-content-right">
-                           <div className="header-element align-items-center">
-                               <div className="btn-list d-lg-none d-block">
-                                   <a href="/auth/sign-up" className="btn btn-primary-light">
-                                       Войти
-                                   </a>
-                                   <button className="btn btn-icon btn-success switcher-icon" data-bs-toggle="offcanvas"
-                                           data-bs-target="#switcher-canvas">
-                                       <i className="ri-settings-3-line"></i>
-                                   </button>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-
-               <div className="app-sidebar sticky"  id="sidebar">
-                   <div className="container-xl">
-                       <div className="main-sidebar">
-                           <div className="main-menu-container nav nav-pills sub-open">
-                               <div className="landing-logo-container">
-                                   <div className="horizontal-logo">
-                                       <a href="/" className="header-logo">
-
-                                       </a>
-                                   </div>
-                               </div>
-                               <div className="slide-left" id="slide-left">
-                                   <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
-                                        viewBox="0 0 24 24">
-                                       <path
-                                           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-                                   </svg>
-                               </div>
-                               <ul className="main-menu">
-
-                                   <li className="slide">
-                                       <a className="side-menu__item" href="#home">
-                                           <span className="side-menu__label">Главная</span>
-                                       </a>
+                           <div className="offcanvas-body">
+                               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                   <li className="nav-item">
+                                       <a className="nav-link active" aria-current="page" href="/auth/sign-up">Войти</a>
                                    </li>
 
-                                   <li className="slide">
-                                       <a href="#about" className="side-menu__item">
-                                           <span className="side-menu__label">О проекте</span>
-                                       </a>
-                                   </li>
+                                   <li className="nav-item dropdown">
 
-                                   <li className="slide has-sub">
-                                       <a href="javascript:void(0);" className="side-menu__item">
-                                           <span className="side-menu__label me-2">Разделы</span>
-                                           <i className="fe fe-chevron-right side-menu__angle op-8"></i>
-                                       </a>
-                                       <ul className="slide-menu child1">
-                                           <li className="slide">
-                                               <a href="#statistics" className="side-menu__item">В разработе</a>
+                                       <ul className="dropdown-menu">
+                                           <li><a className="dropdown-item" href="#">Action</a></li>
+                                           <li><a className="dropdown-item" href="#">Another action</a></li>
+                                           <li>
+                                               <hr className="dropdown-divider"/>
                                            </li>
-
-
+                                           <li><a className="dropdown-item" href="#">Something else here</a></li>
                                        </ul>
                                    </li>
-
-                                   <li className="slide">
-                                       <a href="#team" className="side-menu__item">
-                                           <span className="side-menu__label">Команда</span>
-                                       </a>
-                                   </li>
-
-                                   <li className="slide">
-                                       <a href="#faq" className="side-menu__item">
-                                           <span className="side-menu__label">Faq's</span>
-                                       </a>
-                                   </li>
-
-                                   <li className="slide">
-                                       <a href="#contact" className="side-menu__item">
-                                           <span className="side-menu__label">Контакты</span>
-                                       </a>
-                                   </li>
-
                                </ul>
-                               <div className="slide-right" id="slide-right">
-                                   <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
-                                        viewBox="0 0 24 24">
-                                       <path
-                                           d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-                                   </svg>
-                               </div>
-                               <div className="d-lg-flex d-none">
-                                   <div className="btn-list d-lg-flex d-none mt-lg-2 mt-xl-0 mt-0">
-                                       <a href="/auth/sign-up" className="btn btn-wave btn-primary">
-                                           Войти
-                                       </a>
-                                       <button className="btn btn-wave btn-icon btn-light switcher-icon"
-                                               data-bs-toggle="offcanvas" data-bs-target="#switcher-canvas">
-                                           <i className="ri-settings-3-line"></i>
-                                       </button>
-                                   </div>
-                               </div>
+                               <form className="d-flex mt-3" role="search">
+                                   <input className="form-control me-2" type="search" placeholder="Поиск"
+                                          aria-label="Поиск"/>
+                                       <button className="btn btn-outline-success" type="submit">Поиск</button>
+                               </form>
                            </div>
-
                        </div>
-
                    </div>
-
-               </div>
-
-
-
-
-
-
-
+               </nav>
 
                <div className="main-content landing-main px-0">
 

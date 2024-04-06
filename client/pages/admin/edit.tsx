@@ -16,6 +16,7 @@ import { useFeatures } from '@/hooks/useFeatures'
 import { buildServerSideProps } from '@/ssr/buildServerSideProps';
 import { fetch } from '../../shared/utils/fetch';
 import Link from "next/link";
+import axios from "axios";
 
 type THomeProps = {
     blogPosts: BlogPost[];
@@ -1362,6 +1363,6 @@ export default Index;
 
 export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
     const blogPosts = await fetch('/tracks/');
-
-    return { blogPosts };
+    //const response = await axios.delete('http://localhost:4000/tracks/' + blogPosts.id)
+    return { blogPosts};
 });

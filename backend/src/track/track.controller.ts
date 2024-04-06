@@ -1,7 +1,8 @@
-import {Body, Controller, Delete, Get, Param, Post, Query} from "@nestjs/common";
+import {Body, Controller, Delete, Get, Param, Post, Query, Req, UseInterceptors} from "@nestjs/common";
 import {TrackService} from "./track.service";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import {ObjectId} from "typeorm";
+import {Track} from "./entities/track.entity";
 
 
 @Controller('/tracks')
@@ -10,8 +11,8 @@ export class TrackController{
     constructor(private trackService: TrackService) {}
 
     @Post()
-    create(@Body() dto: CreateTrackDto){
-        return this.trackService.create(dto)
+      async create(@Body() dto: CreateTrackDto): Promise<Track>{
+        return await this.trackService.create(dto)
     }
 
     @Get()

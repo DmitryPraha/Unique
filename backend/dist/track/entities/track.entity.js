@@ -25,10 +25,6 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Track.prototype, "login", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
 ], Track.prototype, "password", void 0);
 __decorate([
     (0, typeorm_1.Column)({ default: true }),

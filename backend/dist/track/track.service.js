@@ -18,12 +18,15 @@ const typeorm_1 = require("@nestjs/typeorm");
 const track_entity_1 = require("./entities/track.entity");
 const typeorm_2 = require("typeorm");
 let TrackService = class TrackService {
-    constructor(tracksRepository) {
+    constructor(tracksRepository, trackRepository) {
         this.tracksRepository = tracksRepository;
+        this.trackRepository = trackRepository;
     }
-    async create(dto) {
-        const track = this.tracksRepository.create();
-        return track;
+    async create(data) {
+        const product = new track_entity_1.Track();
+        product.domain = data.domain;
+        product.password = data.password;
+        return await this.trackRepository.save(product);
     }
     async getAll(count = 10, offset = 0) {
         const tracks = await this.tracksRepository.find();
@@ -33,9 +36,8 @@ let TrackService = class TrackService {
         return await this.tracksRepository.findOneById(id);
     }
     async delete(id) {
-        const track = this.tracksRepository.findOneById(id);
-        const num = this.tracksRepository.delete(await track);
-        return num;
+        const track = await this.tracksRepository.findOneById(id);
+        return await this.tracksRepository.delete(track);
     }
     async search(query) {
         const tracks = await this.tracksRepository.find();
@@ -46,6 +48,8 @@ exports.TrackService = TrackService;
 exports.TrackService = TrackService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(track_entity_1.Track)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(track_entity_1.Track)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], TrackService);
 //# sourceMappingURL=track.service.js.map

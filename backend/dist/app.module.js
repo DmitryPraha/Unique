@@ -12,6 +12,7 @@ const track_module_1 = require("./track/track.module");
 const typeorm_1 = require("@nestjs/typeorm");
 const track_entity_1 = require("./track/entities/track.entity");
 const serve_static_1 = require("@nestjs/serve-static");
+const data_module_1 = require("./data/data.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -29,6 +30,7 @@ exports.AppModule = AppModule = __decorate([
                 entities: [track_entity_1.Track],
                 synchronize: true,
             }),
+            data_module_1.DataModule,
         ]
     })
 ], AppModule);

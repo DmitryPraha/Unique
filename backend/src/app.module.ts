@@ -4,6 +4,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {Track} from "./track/entities/track.entity";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import { join } from 'path';
+import { DataModule } from './data/data.module';
 import * as path from 'path';
 
 @Module({
@@ -21,6 +22,7 @@ import * as path from 'path';
             entities: [Track],
             synchronize: true,
         }),
+        DataModule,
     ]
 
 })

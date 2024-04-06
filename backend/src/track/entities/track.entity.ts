@@ -9,9 +9,6 @@ export class Track {
     domain: string;
 
     @Column()
-    login: string;
-
-    @Column()
     password: string;
 
     @Column({ default: true })

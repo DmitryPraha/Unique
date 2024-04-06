@@ -21,6 +21,8 @@ const buildServerSideProps = <P, Q extends ParsedUrlQuery = ParsedUrlQuery>(
   return async (ctx) => {
     const props = await getServerSideProps(ctx);
 
+    const props1 = await getServerSideProps(ctx);
+
     return {
       props: {
         ...props,

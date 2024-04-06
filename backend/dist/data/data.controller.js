@@ -12,70 +12,69 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TrackController = void 0;
+exports.DataController = void 0;
 const common_1 = require("@nestjs/common");
-const track_service_1 = require("./track.service");
-const create_track_dto_1 = require("./dto/create-track.dto");
-const typeorm_1 = require("typeorm");
-let TrackController = class TrackController {
-    constructor(trackService) {
-        this.trackService = trackService;
+const data_service_1 = require("./data.service");
+const create_datum_dto_1 = require("./dto/create-datum.dto");
+const update_datum_dto_1 = require("./dto/update-datum.dto");
+let DataController = class DataController {
+    constructor(dataService) {
+        this.dataService = dataService;
     }
-    async create(dto) {
-        return await this.trackService.create(dto);
+    create(createDatumDto) {
+        return this.dataService.create(createDatumDto);
     }
-    getAll(count, offset) {
-        return this.trackService.getAll(count, offset);
+    findAll() {
+        return this.dataService.findAll();
     }
-    search(query) {
-        return this.trackService.search(query);
+    findOne(id) {
+        return this.dataService.findOne(+id);
     }
-    getOne(id) {
-        return this.trackService.getOne(id);
+    update(id, updateDatumDto) {
+        return this.dataService.update(+id, updateDatumDto);
     }
-    delete(id) {
-        return this.trackService.delete(id);
+    remove(id) {
+        return this.dataService.remove(+id);
     }
 };
-exports.TrackController = TrackController;
+exports.DataController = DataController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_track_dto_1.CreateTrackDto]),
-    __metadata("design:returntype", Promise)
-], TrackController.prototype, "create", null);
+    __metadata("design:paramtypes", [create_datum_dto_1.CreateDatumDto]),
+    __metadata("design:returntype", void 0)
+], DataController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)('count')),
-    __param(1, (0, common_1.Query)('offset')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], TrackController.prototype, "getAll", null);
-__decorate([
-    (0, common_1.Get)('/search'),
-    __param(0, (0, common_1.Query)('query')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], TrackController.prototype, "search", null);
+], DataController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeorm_1.ObjectId]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], TrackController.prototype, "getOne", null);
+], DataController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, update_datum_dto_1.UpdateDatumDto]),
+    __metadata("design:returntype", void 0)
+], DataController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeorm_1.ObjectId]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], TrackController.prototype, "delete", null);
-exports.TrackController = TrackController = __decorate([
-    (0, common_1.Controller)('/tracks'),
-    __metadata("design:paramtypes", [track_service_1.TrackService])
-], TrackController);
-//# sourceMappingURL=track.controller.js.map
+], DataController.prototype, "remove", null);
+exports.DataController = DataController = __decorate([
+    (0, common_1.Controller)('data'),
+    __metadata("design:paramtypes", [data_service_1.DataService])
+], DataController);
+//# sourceMappingURL=data.controller.js.map

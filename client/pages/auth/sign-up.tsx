@@ -519,8 +519,6 @@ export default function Admin() {
                     <div className="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
                         <div className="my-5 d-flex justify-content-center">
                             <a href="index.html">
-                                <img src="/images/brand-logos/desktop-logo.png" alt="logo"
-                                     className="desktop-logo"/>
                                     <img src="/images/brand-logos/desktop-dark.png" alt="logo"
                                          className="desktop-dark"/>
                             </a>
@@ -542,7 +540,7 @@ export default function Admin() {
                                             пароль?</a></label>
                                         <div className="input-group">
                                             <input type="password" className="form-control form-control-lg"
-                                                   id="signin-password" placeholder="password"/>
+                                                   id="signin-password" placeholder="Пароль"/>
                                                 <button className="btn btn-light" type="button"
                                                         onClick="createpassword('signin-password',this)"
                                                         id="button-addon2"><i

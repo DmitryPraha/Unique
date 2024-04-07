@@ -6,6 +6,9 @@ const start = async () => {
         const PORT = process.env.PORT || 4000;
         const app = await NestFactory.create(AppModule)
 
+        // Enable CORS
+        app.enableCors();
+
         await app.listen(PORT, () => console.log('backend started on PORT ${PORT}'))
     } catch (e) {
         console.log(e)

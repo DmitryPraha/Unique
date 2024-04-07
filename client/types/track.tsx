@@ -1,7 +1,6 @@
 export interface ITrack{
-id:string;
+    id:string,
 domain:string;
-login:string;
 password:string;
 isActive:boolean;
 }

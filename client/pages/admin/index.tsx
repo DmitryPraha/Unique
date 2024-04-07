@@ -537,24 +537,21 @@ export default function Admin() {
             <header className="app-header">
 
                 <div className="main-header-container container-fluid">
-
-
                     <div className="header-content-left">
-
                         <div className="header-element">
                             <div className="horizontal-logo">
                                 <a href="" className="header-logo">
-                                    <img src="/images/brand-logos/desktop-logo.png" alt="logo"
+                                    <img src="/images/logo1.png" alt="logo"
                                          className="desktop-logo"/>
-                                        <img src="/images/brand-logos/toggle-logo.png" alt="logo"
+                                        <img src="/images/logo1.png" alt="logo"
                                              className="toggle-logo"/>
-                                            <img src="/images/brand-logos/desktop-dark.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-dark"/>
-                                                <img src="/images/brand-logos/toggle-dark.png" alt="logo"
+                                                <img src="/images/logo1.png" alt="logo"
                                                      className="toggle-dark"/>
-                                                    <img src="/images/brand-logos/desktop-white.png" alt="logo"
+                                                    <img src="/images/logo1.png" alt="logo"
                                                          className="desktop-white"/>
-                                                        <img src="/images/brand-logos/toggle-white.png"
+                                                        <img src="/images/logo1.png"
                                                              alt="logo" className="toggle-white"/>
                                 </a>
                             </div>
@@ -1157,7 +1154,13 @@ export default function Admin() {
                             <li className="slide">
                                 <a href="/admin/download" className="side-menu__item">
                                     <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Загрузка</span>
+                                    <span className="side-menu__label">Загрузка файлов</span>
+                                </a>
+                            </li>
+                            <li className="slide">
+                                <a href="/admin/create" className="side-menu__item">
+                                    <i className="bx bx-store-alt side-menu__icon"></i>
+                                    <span className="side-menu__label">Ручное добавление</span>
                                 </a>
                             </li>
                             <li className="slide">

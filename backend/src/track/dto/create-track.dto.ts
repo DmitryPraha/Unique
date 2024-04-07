@@ -6,10 +6,10 @@ export class CreateTrackDto{
     @IsInt()
     id: number;
 
-    @Column({ default: "ozon" })
+    @IsString()
     domain: string;
 
-    @Column({ default: "amazon" })
+    @IsString()
     password: string;
 
     @Column({ default: true })

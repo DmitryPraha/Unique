@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -89,7 +90,7 @@ export default function Home() {
                                    </div>
                                    <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-4">
                                        <div className="text-end landing-main-image landing-heading-img">
-                                           <img src="img/blank2.gif" alt="" className="img-fluid"/>
+                                           <img src="/images/logo1.png" alt="" className="img-fluid"/>
                                        </div>
                                    </div>
                                </div>
@@ -101,10 +102,10 @@ export default function Home() {
                        <div className="container text-center position-relative">
                            <p className="fs-12 fw-semibold text-success mb-1"><span
                                className="landing-section-heading">Статистика</span></p>
-                           <h3 className="fw-semibold mb-2">Находится в разработке.</h3>
+                           <h3 className="fw-semibold mb-2">Здесь представлена статистика</h3>
                            <div className="row justify-content-center">
                                <div className="col-xl-7">
-                                   <p className="text-muted fs-15 mb-5 fw-normal">Находится в разработке.</p>
+                                   <p className="text-muted fs-15 mb-5 fw-normal"></p>
                                </div>
                            </div>
                            <div className="row  g-2 justify-content-center">
@@ -156,21 +157,21 @@ export default function Home() {
                        <div className="container text-center">
                            <p className="fs-12 fw-semibold text-success mb-1"><span className="landing-section-heading">О проекте</span>
                            </p>
-                           <h3 className="fw-semibold mb-2">Находится в разработке</h3>
+                           <h3 className="fw-semibold mb-2">Findler. Блок утечки данных</h3>
                            <div className="row justify-content-center">
                                <div className="col-xl-7">
-                                   <p className="text-muted fs-15 mb-3 fw-normal">Находится в разработке.</p>
+                                   <p className="text-muted fs-15 mb-3 fw-normal"></p>
                                </div>
                            </div>
                            <div className="row justify-content-between align-items-center mx-0">
                                <div className="col-xxl-5 col-xl-5 col-lg-5 customize-image text-center">
                                    <div className="text-lg-end">
-                                       <img src="img/blank2.gif" alt="" className="img-fluid"/>
+                                       <img src="/images/logo.png" alt="" className="img-fluid"/>
                                    </div>
                                </div>
                                <div className="col-xxl-6 col-xl-6 col-lg-6 pt-5 pb-0 px-lg-2 px-5 text-start">
-                                   <h5 className="text-lg-start fw-semibold mb-0">Находится в разработке</h5>
-                                   <p className=" text-muted">Находится в разработке</p>
+                                   <h5 className="text-lg-start fw-semibold mb-0"></h5>
+                                   <p className=" text-muted">UniqueDev</p>
                                    <div className="row">
                                        <div className="col-12 col-md-12">
                                            <div className="d-flex">
@@ -178,8 +179,8 @@ export default function Home() {
                                         <i className='bx bxs-badge-check text-primary fs-18'></i>
                                     </span>
                                                <div className="ms-2">
-                                                   <h6 className="fw-semibold mb-0">Находится в разработке</h6>
-                                                   <p className=" text-muted">Находится в разработке </p>
+                                                   <h6 className="fw-semibold mb-0">Команда из 4-ех разработчиков</h6>
+                                                   <p className=" text-muted"></p>
                                                </div>
                                            </div>
                                        </div>
@@ -189,8 +190,8 @@ export default function Home() {
                                         <i className='bx bxs-badge-check text-primary fs-18'></i>
                                     </span>
                                                <div className="ms-2">
-                                                   <h6 className="fw-semibold mb-0">Находится в разработке</h6>
-                                                   <p className=" text-muted">Находится в разработке </p>
+                                                   <h6 className="fw-semibold mb-0">Расположение в лучшем городе земли</h6>
+                                                   <p className=" text-muted"></p>
                                                </div>
                                            </div>
                                        </div>
@@ -200,8 +201,8 @@ export default function Home() {
                                         <i className='bx bxs-badge-check text-primary fs-18'></i>
                                     </span>
                                                <div className="ms-2">
-                                                   <h6 className="fw-semibold mb-0">Находится в разработке</h6>
-                                                   <p className=" text-muted">Находится в разработке </p>
+                                                   <h6 className="fw-semibold mb-0">Активность 24/7</h6>
+                                                   <p className=" text-muted"></p>
                                                </div>
                                            </div>
                                        </div>
@@ -215,7 +216,7 @@ export default function Home() {
                        <div className="container text-center">
                            <p className="fs-12 fw-semibold text-success mb-1"><span className="landing-section-heading">Ключевые особенности</span>
                            </p>
-                           <h2 className="fw-semibold mb-2">Находится в разработке</h2>
+                           <h2 className="fw-semibold mb-2"></h2>
                            <div className="row justify-content-center mb-5">
                                <div className="col-xl-7">
                                    <p className="text-muted fs-15mb-0 fw-normal">Находится в разработке.</p>
@@ -395,27 +396,27 @@ export default function Home() {
                                    <div className="">
                                        <div className="feature-logos mt-sm-5 flex-wrap">
                                            <div className="ms-sm-5 ms-2 text-center">
-                                               <img src="/images/media/landing/web/1.png" alt="image"
+                                               <img src="/images/index/css.svg.png" alt="image"
                                                     className="featur-icon"/>
                                                    <h5 className="mt-3 text-fixed-white ">CSS</h5>
                                            </div>
                                            <div className="ms-sm-5 ms-2 text-center">
-                                               <img src="/images/media/landing/web/2.png" alt="image"
+                                               <img src="/images/index/html1.webp" alt="image"
                                                     className="featur-icon"/>
                                                    <h5 className="mt-3 text-fixed-white ">HTML5</h5>
                                            </div>
                                            <div className="ms-sm-5 ms-2 text-center">
-                                               <img src="/images/media/landing/web/4.png" alt="image"
+                                               <img src="/images/index/next.jpg" alt="image"
                                                     className="featur-icon"/>
-                                                   <h5 className="mt-3 text-fixed-white ">JS</h5>
+                                                   <h5 className="mt-3 text-fixed-white ">Next.js</h5>
                                            </div>
                                            <div className="ms-sm-5 ms-2 text-center">
-                                               <img src="/images/media/landing/web/5.png" alt="image"
+                                               <img src="/images/index/node.svg.png" alt="image"
                                                     className="featur-icon"/>
                                                    <h5 className="mt-3 text-fixed-white ">Node.js</h5>
                                            </div>
                                            <div className="ms-sm-5 ms-2 text-center">
-                                               <img src="/images/media/landing/web/6.png" alt="image"
+                                               <img src="/images/index/nest.jpg" alt="image"
                                                     className="featur-icon"/>
                                                    <h5 className="mt-3 text-fixed-white ">Nest.js</h5>
                                            </div>
@@ -430,12 +431,11 @@ export default function Home() {
                    <section className="section landing-testimonials section-bg" id="testimonials">
                        <div className="container text-center">
                            <p className="fs-12 fw-semibold text-success mb-1"><span
-                               className="landing-section-heading">TESTIMONIALS</span></p>
-                           <h3 className="fw-semibold mb-2">We never failed to reach expectations</h3>
+                               className="landing-section-heading">Отзывы</span></p>
+                           <h3 className="fw-semibold mb-2">Что говорят о нашем проекте</h3>
                            <div className="row justify-content-center">
                                <div className="col-xl-7">
-                                   <p className="text-muted fs-15 mb-5 fw-normal">Some of the reviews our clients gave
-                                       which brings motivation to work for future projects.</p>
+                                   <p className="text-muted fs-15 mb-5 fw-normal">.</p>
                                </div>
                            </div>
                            <div className="swiper pagination-dynamic text-start">
@@ -445,306 +445,30 @@ export default function Home() {
                                            <div className="card-body">
                                                <div className="d-flex align-items-center mb-3">
                                             <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/15.jpg" alt=""/>
+                                                <img src="/images/index/sobolev.jpg" alt=""/>
                                             </span>
                                                    <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Json Taylor</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO OF NORJA</p>
+                                                       <p className="mb-0 fw-semibold fs-14">Александр</p>
+                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO data.ru</p>
                                                    </div>
                                                </div>
                                                <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
+                                                   <span className="text-muted">Все круто</span>
                                                </div>
                                                <div className="d-flex align-items-center justify-content-between">
                                                    <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
+                                                       <span className="text-muted">Оценека : </span>
                                                        <span className="text-warning d-block ms-1">
                                                     <i className="ri-star-fill"></i>
                                                     <i className="ri-star-fill"></i>
                                                     <i className="ri-star-fill"></i>
                                                     <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-half-fill"></i>
+                                                           <i className="ri-star-fill"></i>
                                                 </span>
                                                    </div>
                                                    <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>12 days ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Json Taylor</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/4.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Melissa Blue</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">MANAGER CHO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-half-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>7 days ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Melissa Blue</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/2.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Kiara Advain</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO OF
-                                                           EMPIRO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-line"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>2 days ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Kiara Advain</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/10.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Jhonson Smith</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CHIEF SECRETARY
-                                                           MBIO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-half-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>16 hrs ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Jhonson Smith</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/12.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Dwayne Stort</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO
-                                                           ARMEDILLO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-line"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>22 days ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Dwayne Stort</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/3.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Jasmine Kova</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">AGGENT AMIO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-half-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>26 days ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Jasmine Kova</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="../assets/images/faces/16.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Dolph MR</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO MR BRAND</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>1 month ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Dolph MR</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="/images/faces/5.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Brenda Simpson</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CEO AIBMO</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-half-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>1 month ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Brenda Simpson</i></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div className="swiper-slide">
-                                       <div className="card custom-card testimonial-card">
-                                           <div className="card-body">
-                                               <div className="d-flex align-items-center mb-3">
-                                            <span className="avatar avatar-md avatar-rounded me-3">
-                                                <img src="/images/faces/7.jpg" alt=""/>
-                                            </span>
-                                                   <div>
-                                                       <p className="mb-0 fw-semibold fs-14">Julia Sams</p>
-                                                       <p className="mb-0 fs-10 fw-semibold text-muted">CHIEF SECRETARY
-                                                           BHOL</p>
-                                                   </div>
-                                               </div>
-                                               <div className="mb-3">
-                                                   <span className="text-muted">- Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem quaerat distinctio  --</span>
-                                               </div>
-                                               <div className="d-flex align-items-center justify-content-between">
-                                                   <div className="d-flex align-items-center">
-                                                       <span className="text-muted">Rating : </span>
-                                                       <span className="text-warning d-block ms-1">
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                    <i className="ri-star-fill"></i>
-                                                </span>
-                                                   </div>
-                                                   <div className="float-end fs-12 fw-semibold text-muted text-end">
-                                                       <span>2 month ago</span>
-                                                       <span className="d-block fw-normal fs-12 text-success"><i>Julia Sams</i></span>
+                                                       <span>12 дней назад</span>
+                                                       <span className="d-block fw-normal fs-12 text-success"><i>Александр</i></span>
                                                    </div>
                                                </div>
                                            </div>
@@ -771,7 +495,7 @@ export default function Home() {
                                    <div className="card custom-card text-center team-card ">
                                        <div className="card-body p-5">
                                     <span className="avatar avatar-xxl avatar-rounded mb-3 team-avatar">
-                                        <img src="/images/faces/15.jpg" alt=""/>
+                                        <img src="/images/index/jordan.jpeg" alt=""/>
                                     </span>
                                            <p className="fw-semibold fs-17 mb-0 text-default">Дмитрий Власов</p>
                                            <span className="text-muted fs-14 text-primary fw-semibold">Тимлид</span>
@@ -787,7 +511,7 @@ export default function Home() {
                                    <div className="card custom-card text-center team-card ">
                                        <div className="card-body p-5">
                                     <span className="avatar avatar-xxl avatar-rounded mb-3 team-avatar">
-                                        <img src="/images/faces/12.jpg" alt=""/>
+                                        <img src="/images/index/sigma.jpeg" alt=""/>
                                     </span>
                                            <p className="fw-semibold fs-17 mb-0 text-default">Роман Команич</p>
                                            <span className="text-muted fs-14 text-primary fw-semibold">Frontend разработчик</span>
@@ -803,7 +527,7 @@ export default function Home() {
                                    <div className="card custom-card text-center team-card ">
                                        <div className="card-body p-5">
                                     <span className="avatar avatar-xxl avatar-rounded mb-3 team-avatar">
-                                        <img src="/images/faces/5.jpg" alt=""/>
+                                        <img src="/images/index/gigachad.jpeg" alt=""/>
                                     </span>
                                            <p className="fw-semibold fs-17 mb-0 text-default">Кирилл Медведев</p>
                                            <span className="text-muted fs-14 text-primary fw-semibold">Backend разработчик</span>
@@ -819,7 +543,7 @@ export default function Home() {
                                    <div className="card custom-card text-center team-card ">
                                        <div className="card-body p-5">
                                     <span className="avatar avatar-xxl avatar-rounded mb-3 team-avatar">
-                                        <img src="/images/faces/1.jpg" alt=""/>
+                                        <img src="/images/index/thomas.jpeg" alt=""/>
                                     </span>
                                            <p className="fw-semibold fs-17 mb-0 text-default">Михаил Китаев</p>
                                            <span className="text-muted fs-14 text-primary fw-semibold">Frontend разработчик</span>
@@ -860,7 +584,7 @@ export default function Home() {
                                                                data-bs-target="#collapsecustomicon1One"
                                                                aria-expanded="true"
                                                                aria-controls="collapsecustomicon1One">
-                                                           Находится в разработке?
+                                                           Хороший проект?
                                                        </button>
                                                    </h2>
                                                    <div id="collapsecustomicon1One"
@@ -869,7 +593,7 @@ export default function Home() {
                                                         data-bs-parent="#accordionFAQ1">
                                                        <div className="accordion-body">
 
-                                                           <code>Тест</code>
+                                                           <code>Да, хороший</code>
                                                        </div>
                                                    </div>
                                                </div>
@@ -909,14 +633,14 @@ export default function Home() {
                                                            <label htmlFor="contact-address-name"
                                                                   className="form-label ">Ваше имя :</label>
                                                            <input type="text" className="form-control "
-                                                                  id="contact-address-name" placeholder="Enter Name"/>
+                                                                  id="contact-address-name" placeholder=""/>
                                                        </div>
                                                        <div className="col-xl-12">
                                                            <label htmlFor="contact-address-phone"
                                                                   className="form-label ">Телефон :</label>
                                                            <input type="text" className="form-control "
                                                                   id="contact-address-phone"
-                                                                  placeholder="Enter Phone No"/>
+                                                                  placeholder=""/>
                                                        </div>
                                                        <div className="col-xl-12">
                                                            <label htmlFor="contact-address-address"
@@ -960,8 +684,7 @@ export default function Home() {
                                        <p className="mb-2 op-6 fw-normal">
 
                                        </p>
-                                       <p className="mb-0 op-6 fw-normal">Lorem ipsum dolor sit amet consectetur,
-                                           adipisicing elit. Autem ea esse ad</p>
+                                       <p className="mb-0 op-6 fw-normal">Работаем</p>
                                    </div>
                                </div>
                                <div className="col-md-2 col-sm-6 col-12">

@@ -6,19 +6,28 @@ import {Button, Grid, TextField} from "@mui/material";
 
 const Create = () => {
 
-
     const domain = useInput('')
     const password = useInput('')
     const router = useRouter()
 
-    const next = (data) => {
+    const next = () => {
+
         //Сюда вернуть
         const formData = new FormData()
-        formData.append('domain', data.domain)
-        formData.append('password', data.password)
-        //axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-        //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        axios.post('http://localhost:4000/tracks', formData, )
+        formData.append('domain', domain.value)
+        formData.append('password', password.value)
+
+        const body = JSON.stringify(Object.fromEntries(formData));
+
+
+            //const formData = {
+        //   "domain" : "yandex.ru",
+        //   "password" : "123"
+        //}
+        //const formData = new FormData()
+        //formData.append('domain', data.domain)
+        //formData.append('password', data.password)
+        axios.post('http://localhost:4000/tracks', body,)
             .then(resp => router.push('/tracks'))
             .catch(e => console.log(e))
 

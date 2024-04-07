@@ -1157,7 +1157,13 @@ export default function Admin() {
                             <li className="slide">
                                 <a href="/admin/download" className="side-menu__item">
                                     <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Загрузка</span>
+                                    <span className="side-menu__label">Загрузка файлов</span>
+                                </a>
+                            </li>
+                            <li className="slide">
+                                <a href="/admin/create" className="side-menu__item">
+                                    <i className="bx bx-store-alt side-menu__icon"></i>
+                                    <span className="side-menu__label">Ручное добавление</span>
                                 </a>
                             </li>
                             <li className="slide">

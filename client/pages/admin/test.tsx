@@ -1,9 +1,37 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import React, {useState} from 'react';
+import {useInput} from "@/hooks/useInput";
+import axios from "axios";
+import {useRouter} from "next/router";
+import {Button, Grid, TextField} from "@mui/material";
 
-export default function Admin() {
+
+const App = () => {
+    const [data, setData] = useState({
+        domain: "",
+        password: ""
+    });
+
+    const router = useRouter()
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setData({
+            ...data,
+            [e.target.name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            domain: data.domain,
+            password: data.password
+        };
+        //const jsonData = JSON.stringify(userData);
+        axios.post("http://localhost:4000/tracks", userData).then(resp => router.push('/admin')).catch(e => console.log(e));
+
+    };
 
     return (
         <>
@@ -1210,6 +1238,7 @@ export default function Admin() {
                             </div>
                             <div className="row">
                                 <div className="col-xl-12">
+                                    <form onSubmit={handleSubmit}>
                                     <div className="card custom-card">
                                         <div className="card-body add-products p-0">
                                             <div className="p-4">
@@ -1222,7 +1251,11 @@ export default function Admin() {
                                                                         <label htmlFor="product-name-add"
                                                                                className="form-label">Домен</label>
                                                                         <input type="text" className="form-control"
-                                                                               id="product-name-add" placeholder=""/>
+                                                                               id="product-name-add" placeholder=""
+                                                                               name="domain"
+                                                                               value={data.domain}
+                                                                               onChange={handleChange}
+                                                                        />
                                                                             <label htmlFor="product-name-add"
                                                                                    className="form-label mt-1 fs-12 op-5 text-muted mb-0"></label>
                                                                     </div>
@@ -1240,7 +1273,11 @@ export default function Admin() {
                                                                                className="form-label">Пароль</label>
                                                                         <input type="text" className="form-control"
                                                                                id="product-actual-price"
-                                                                               placeholder=""/>
+                                                                               placeholder=""
+                                                                               name="password"
+                                                                               value={data.password}
+                                                                               onChange={handleChange}
+                                                                        />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1250,11 +1287,16 @@ export default function Admin() {
                                             </div>
                                             <div
                                                 className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
-                                                <button className="btn btn-success-light m-1">Сохранить<i
+                                                <button className="btn btn-success-light m-1" type="submit">Сохранить<i
                                                     className="bi bi-download ms-2"></i></button>
                                             </div>
                                         </div>
                                     </div>
+                                    </form>
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -1352,3 +1394,7 @@ export default function Admin() {
         </>
     );
 }
+
+
+export default App;
+

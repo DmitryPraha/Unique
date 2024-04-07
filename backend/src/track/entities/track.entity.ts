@@ -5,10 +5,10 @@ export class Track {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'varchar', default: '' })
+    @Column({ type: 'varchar', default: ''})
     domain: string;
 
-    @Column({ type: 'varchar', default: '' })
+    @Column({ type: 'varchar', default: ''})
     password: string;
 
     @Column({ default: true })

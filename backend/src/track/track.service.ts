@@ -1,9 +1,10 @@
 import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Track} from "./entities/track.entity";
-import {DeepPartial, DeleteResult, ObjectId, Repository} from "typeorm";
+import {DeepPartial, DeleteResult, getRepository, ObjectId, Repository} from "typeorm";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import * as domain from "domain";
+import {from, Observable} from "rxjs";
 
 
 @Injectable()
@@ -44,11 +45,24 @@ export class TrackService{
         return await this.tracksRepository.delete(track);
      }
 
+    //findByUsername(domain: string): Promise<Track> {
+   //     const track = getRepository(Track).createQueryBuilder("domain")
+   //         .where("track.domain = :domain", { domain:domain})
+    //        .getOne();
+    //    return track;
+    //}
+
+        async search(domain: string): Promise<Track[][]> {
+           const user = this.tracksRepository
+               .createQueryBuilder()
+               .where("track.domain = :domain", { domain: domain }).getMany();
+           return user;
+        }
+
     //Функция поиска на сайте
     //Пока не работает надо делать
-       async search(query: string): Promise<Track[][]> {
-       const tracks = await this.tracksRepository.find();
-       return tracks;
-    }
-
+      //  async search(id: number): Promise<Track[]> {
+    //    const tracks = await this.tracksRepository.findOneById(id);
+    //    return tracks;
+   // }
 }

@@ -1,93 +1,51 @@
-import React, { useState, ChangeEvent } from "react";
-import TutorialDataService from "../services/TutorialService";
-import ITutorialData from '../types/Tutorial';
+import React, {useState} from 'react';
+import {useInput} from "@/hooks/useInput";
+import axios from "axios";
+import {useRouter} from "next/router";
+import {Button, Grid, TextField} from "@mui/material";
 
-const AddTutorial: React.FC = () => {
-    const initialTutorialState = {
-        id: null,
-        title: "",
-        description: "",
-        published: false
-    };
-    const [tutorial, setTutorial] = useState<ITutorialData>(initialTutorialState);
-    const [submitted, setSubmitted] = useState<boolean>(false);
+const Create = () => {
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setTutorial({ ...tutorial, [name]: value });
-    };
 
-    const saveTutorial = () => {
-        var data = {
-            title: tutorial.title,
-            description: tutorial.description
-        };
+    const domain = useInput('')
+    const password = useInput('')
+    const router = useRouter()
 
-        TutorialDataService.create(data)
-            .then((response: any) => {
-                setTutorial({
-                    id: response.data.id,
-                    title: response.data.title,
-                    description: response.data.description,
-                    published: response.data.published
-                });
-                setSubmitted(true);
-                console.log(response.data);
-            })
-            .catch((e: Error) => {
-                console.log(e);
-            });
-    };
+    const next = (data) => {
+        //Сюда вернуть
+        const formData = new FormData()
+        formData.append('domain', data.domain)
+        formData.append('password', data.password)
+        //axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        axios.post('http://localhost:4000/tracks', formData, )
+            .then(resp => router.push('/tracks'))
+            .catch(e => console.log(e))
 
-    const newTutorial = () => {
-        setTutorial(initialTutorialState);
-        setSubmitted(false);
-    };
 
+    }
     return (
-        <div className="submit-form">
-            {submitted ? (
-                <div>
-                    <h4>You submitted successfully!</h4>
-                    <button className="btn btn-success" onClick={newTutorial}>
-                        Add
-                    </button>
-                </div>
-            ) : (
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="title">Title</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="title"
-                            required
-                            value={tutorial.title}
-                            onChange={handleInputChange}
-                            name="title"
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="description">Description</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="description"
-                            required
-                            value={tutorial.description}
-                            onChange={handleInputChange}
-                            name="description"
-                        />
-                    </div>
-
-                    <button onClick={saveTutorial} className="btn btn-success">
-                        Submit
-                    </button>
-                </div>
-            )}
-        </div>
+        <>
+        <Grid container direction={"column"} style={{padding: 20}}>
+            <TextField
+                {...domain}
+                style={{marginTop: 10}}
+                label={"Имя исполнителя"}
+            />
+            <TextField
+                {...password}
+                style={{marginTop: 10}}
+                label={"Слова к треку"}
+                multiline
+                rows={3}
+            />
+        </Grid>
+    <Grid container justifyContent='space-between'>
+        <Button onClick={next}>Далее</Button>
+    </Grid>
+        </>
     );
 };
 
-export default AddTutorial;
+export default Create;
+

@@ -1,0 +1,11 @@
+URL: https://192.168.0.1
+Username: root
+Password: root
+
+URL: https://mail.ru
+Username: myhackername
+Password: MyHackerPassword1@
+
+URL: http://gosuslugi.ru
+Username: 79220000001
+Password: 4238872934

@@ -27,12 +27,15 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/serve-static": "^4.0.1",
     "@nestjs/typeorm": "^10.0.2",
+    "byline": "^5.0.0",
     "class-validator": "^0.14.1",
     "mongoose": "^8.2.3",
     "mysql2": "^3.9.2",
     "nestjs-form-data": "^1.9.7",
+    "plain-text-data-to-json": "^2.0.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
+    "txt-file-to-json": "^3.0.6",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

@@ -4,12 +4,17 @@ import {Track} from "./entities/track.entity";
 import {DeepPartial, DeleteResult, getRepository, ObjectId, Repository} from "typeorm";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import * as domain from "domain";
-import {from, Observable} from "rxjs";
+import {count, from, Observable} from "rxjs";
+import * as fs from "fs";
+import * as readline from "readline";
+import {toJson} from 'plain-text-data-to-json'
+import {readFile} from "fs";
 
 
 @Injectable()
 
 export class TrackService{
+
 
     constructor(
         @InjectRepository(Track)
@@ -45,12 +50,6 @@ export class TrackService{
         return await this.tracksRepository.delete(track);
      }
 
-    //findByUsername(domain: string): Promise<Track> {
-   //     const track = getRepository(Track).createQueryBuilder("domain")
-   //         .where("track.domain = :domain", { domain:domain})
-    //        .getOne();
-    //    return track;
-    //}
 
         async search(domain: string): Promise<Track[][]> {
            const user = this.tracksRepository
@@ -59,10 +58,32 @@ export class TrackService{
            return user;
         }
 
-    //Функция поиска на сайте
-    //Пока не работает надо делать
-      //  async search(id: number): Promise<Track[]> {
-    //    const tracks = await this.tracksRepository.findOneById(id);
-    //    return tracks;
-   // }
+
+    async filesFunction() {
+        const fs = require('fs');
+        try {
+            const data = fs.readFileSync('./src/static/files/pass_01.txt', 'utf8');
+            const lines = data.trim().split('\n');
+            const entities = [];
+
+            lines.forEach(line => {
+                const [domain, email, password] = line.trim().split(' ');
+                entities.push({domain, password});
+            });
+
+            return this.trackRepository.save(entities);
+            //return entities;
+        } catch (err) {
+            console.error('Ошибка чтения файла:', err);
+            return null;
+        }
+
+        const entities = fs.readFileSync('./src/static/files/pass_01.txt', 'utf8');
+
+        if (entities) {
+            console.log(entities);
+        } else {
+            console.log('Не удалось прочитать данные из файла.');
+        }
+    }
 }

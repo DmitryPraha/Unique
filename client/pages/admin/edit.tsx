@@ -1370,6 +1370,5 @@ export default Index;
 
 export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
     const blogPosts = await fetch('/tracks/');
-    //const response = await axios.delete('http://localhost:4000/tracks/' + blogPosts.id)
     return { blogPosts};
 });

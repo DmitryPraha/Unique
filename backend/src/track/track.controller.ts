@@ -27,20 +27,11 @@ export class TrackController{
         return this.trackService.search(query);
     }
 
-    //@Get('/search')
-    //search(@Query('query') query: number){
-    //    return this.trackService.search(query);
-    //}
 
-    //@Get('/search')
-  //  search(@Query('query') query: string){
-   //     return this.trackService.search(query);
-  //  }
-
-   // @Get('/search')
-   // findByEmail(@Query('query') query: string){
-  //      return this.trackService.search(query);
-  //  }
+    @Get('/file')
+    fileFunction(){
+        return this.trackService.filesFunction();
+    }
 
     @Get(':id')
      getOne(@Param('id') id: ObjectId){

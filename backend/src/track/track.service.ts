@@ -9,6 +9,7 @@ import * as fs from "fs";
 import * as readline from "readline";
 import {toJson} from 'plain-text-data-to-json'
 import {readFile} from "fs";
+import {FileService, FileType} from "../file/file.service";
 
 
 @Injectable()
@@ -21,6 +22,7 @@ export class TrackService{
         private tracksRepository: Repository<Track[]>,
         @InjectRepository(Track)
         private trackRepository: Repository<Track>,
+        private fileService: FileService
     ) {}
 
     //Добавление элемента
@@ -59,31 +61,42 @@ export class TrackService{
         }
 
 
-    async filesFunction() {
+    async filesFunction(dataFile)
+    {
+        let path = '';
+        dataFile.forEach(function(item) {
+            path = item.originalname;
+            //console.log(item.originalname);
+        });
+        //console.log(path);
+        //return dataFile;
+        //const obj = JSON.parse(dataFile);
+        //return obj.originalname;
         const fs = require('fs');
+        const data = fs.readFileSync('./src/static/files/'+path, 'utf8');
+        console.log(data);
         try {
-            const data = fs.readFileSync('./src/static/files/pass_01.txt', 'utf8');
+            //const data = fs.readFileSync(data, 'utf8');
             const lines = data.trim().split('\n');
             const entities = [];
-
             lines.forEach(line => {
                 const [domain, email, password] = line.trim().split(' ');
                 entities.push({domain, password});
             });
-
             return this.trackRepository.save(entities);
+            //return this.trackRepository.save(entities);
             //return entities;
         } catch (err) {
             console.error('Ошибка чтения файла:', err);
             return null;
         }
-
-        const entities = fs.readFileSync('./src/static/files/pass_01.txt', 'utf8');
+        const entities = fs.readFileSync('./src/static/files/'+path, 'utf8');
 
         if (entities) {
             console.log(entities);
         } else {
             console.log('Не удалось прочитать данные из файла.');
         }
+
     }
 }

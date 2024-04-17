@@ -1,8 +1,20 @@
-import {Body, Controller, Delete, Get, Param, Post, Query, Req, UseInterceptors} from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Post,
+    Query,
+    UploadedFiles,
+    UseInterceptors
+} from "@nestjs/common";
 import {TrackService} from "./track.service";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import {ObjectId} from "typeorm";
 import {Track} from "./entities/track.entity";
+import {AnyFilesInterceptor} from "@nestjs/platform-express";
+
 
 
 @Controller('/tracks')
@@ -28,9 +40,10 @@ export class TrackController{
     }
 
 
-    @Get('/file')
-    fileFunction(){
-        return this.trackService.filesFunction();
+    @Post('/file')
+    fileFunction(@UploadedFiles() file){
+        const text = file;
+        return this.trackService.filesFunction(text);
     }
 
     @Get(':id')
@@ -42,4 +55,20 @@ export class TrackController{
      delete(@Param('id') id: ObjectId){
         return this.trackService.delete(id);
     }
+
+    @Post('upload')
+    @UseInterceptors(AnyFilesInterceptor())
+    uploadFile(@UploadedFiles() files) {
+        console.log(files);
+        return this.trackService.filesFunction(files);
+        //console.log(files);
+    }
+
+    //@Post('upload')
+    //@UseInterceptors(AnyFilesInterceptor())
+    //uploadFile(@UploadedFiles() files) {
+    //    return this.trackService.filesFunction(files);
+    //    //console.log(files);
+    //}
+
 }

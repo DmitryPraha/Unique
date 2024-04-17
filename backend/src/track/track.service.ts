@@ -73,7 +73,7 @@ export class TrackService{
         //const obj = JSON.parse(dataFile);
         //return obj.originalname;
         const fs = require('fs');
-        const data = fs.readFileSync('./src/static/files/'+path, 'utf8');
+        const data = fs.readFileSync('./static/files/'+path, 'utf8');
         console.log(data);
         try {
             //const data = fs.readFileSync(data, 'utf8');
@@ -90,7 +90,7 @@ export class TrackService{
             console.error('Ошибка чтения файла:', err);
             return null;
         }
-        const entities = fs.readFileSync('./src/static/files/'+path, 'utf8');
+        const entities = fs.readFileSync('./static/files/'+path, 'utf8');
 
         if (entities) {
             console.log(entities);

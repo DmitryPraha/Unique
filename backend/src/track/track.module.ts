@@ -5,13 +5,16 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {Track} from "./entities/track.entity";
 import {DataSource} from "typeorm";
 import {FileService} from "../file/file.service";
+import {MulterModule} from "@nestjs/platform-express";
 
 @Module({
     imports: [TypeOrmModule.forFeature([
         Track
-    ])],
+    ]),
+    ],
     controllers: [TrackController],
-    providers: [TrackService, FileService]
+    providers: [TrackService, FileService],
+
 
 })
 

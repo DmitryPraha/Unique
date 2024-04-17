@@ -2,7 +2,7 @@ import {
     Body,
     Controller,
     Delete,
-    Get,
+    Get, HttpException, HttpStatus,
     Param,
     Post,
     Query,
@@ -13,12 +13,23 @@ import {TrackService} from "./track.service";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import {ObjectId} from "typeorm";
 import {Track} from "./entities/track.entity";
-import {AnyFilesInterceptor} from "@nestjs/platform-express";
+import {AnyFilesInterceptor, FileInterceptor, MulterModule} from "@nestjs/platform-express";
+import { diskStorage } from 'multer'
+import { extname } from 'path'
 
-
+const storage = diskStorage({
+    destination: './static/files/',
+    filename: (req, file, cb) => {
+        const name = file.originalname.split('.')[0];
+        const extension = extname(file.originalname);
+        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+        cb(null, `${name}-${randomName}${extension}`);
+    },
+});
 
 @Controller('/tracks')
 export class TrackController{
+
 
     constructor(private trackService: TrackService) {}
 
@@ -56,8 +67,10 @@ export class TrackController{
         return this.trackService.delete(id);
     }
 
+
+
     @Post('upload')
-    @UseInterceptors(AnyFilesInterceptor())
+    @UseInterceptors(AnyFilesInterceptor({storage}))
     uploadFile(@UploadedFiles() files) {
         console.log(files);
         return this.trackService.filesFunction(files);

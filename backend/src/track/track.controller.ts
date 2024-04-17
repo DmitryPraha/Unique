@@ -23,7 +23,7 @@ const storage = diskStorage({
         const name = file.originalname.split('.')[0];
         const extension = extname(file.originalname);
         const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
-        cb(null, `${name}-${randomName}${extension}`);
+        cb(null, `${name}${extension}`);
     },
 });
 
@@ -72,7 +72,8 @@ export class TrackController{
     @Post('upload')
     @UseInterceptors(AnyFilesInterceptor({storage}))
     uploadFile(@UploadedFiles() files) {
-        console.log(files);
+        //console.log(files);
+        //return { message: 'File uploaded successfully!', filename: files.filename };
         return this.trackService.filesFunction(files);
         //console.log(files);
     }

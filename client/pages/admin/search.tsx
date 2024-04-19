@@ -1281,6 +1281,7 @@ const App = ({ defaultValue }: iDefault) => {
                             </div>
                         </div>
                     </div>
+
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">

@@ -1,31 +1,18 @@
-import Head from "next/head";
-import React, {FC} from 'react';
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import {Router} from "next/router";
-import {ITrack} from "@/types/track";
-import TrackList from "@/components/TrackList";
-import {useTypedSelector} from "@/hooks/useTypedSelector";
-import {Provider} from "react-redux";
-import TrackItem from "@/components/TrackItem";
-import {NextThunkDispatch, wrapper} from "@/store";
-import {fetchTracks} from "@/store/actions-creators/track";
-import {BlogPost} from "@/shared/types/blog-post";
-import { useFeatures } from '@/hooks/useFeatures'
+import Link from 'next/link';
+import React, { FC } from 'react';
 import { buildServerSideProps } from '@/ssr/buildServerSideProps';
+import {BlogPost} from "@/shared/types/blog-post";
 import { fetch } from '../../shared/utils/fetch';
-import Link from "next/link";
-import axios from "axios";
-
-type THomeProps = {
-    blogPosts: BlogPost[];
+import Head from "next/head";
+type TBlogProps = {
+    post: BlogPost;
 };
 
+type TBlogQuery = {
+    query: string;
+};
 
-const Index: FC<THomeProps> = ({ blogPosts }) => {
-
-
+const Blog: FC<TBlogProps> = ({ post = {} }) => {
     return (
         <>
             <Head>
@@ -43,9 +30,6 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div>
-
-
-
                 <div className="offcanvas offcanvas-end" tabIndex="-1" id="switcher-canvas"
                      aria-labelledby="offcanvasRightLabel">
                     <div className="offcanvas-header border-bottom">
@@ -562,24 +546,21 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                     <header className="app-header">
 
                         <div className="main-header-container container-fluid">
-
-
                             <div className="header-content-left">
-
                                 <div className="header-element">
                                     <div className="horizontal-logo">
                                         <a href="" className="header-logo">
-                                            <img src="/images/brand-logos/desktop-logo.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-logo"/>
-                                            <img src="/images/brand-logos/toggle-logo.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="toggle-logo"/>
-                                            <img src="/images/brand-logos/desktop-dark.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-dark"/>
-                                            <img src="/images/brand-logos/toggle-dark.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="toggle-dark"/>
-                                            <img src="/images/brand-logos/desktop-white.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-white"/>
-                                            <img src="/images/brand-logos/toggle-white.png"
+                                            <img src="/images/logo1.png"
                                                  alt="logo" className="toggle-white"/>
                                         </a>
                                     </div>
@@ -1134,7 +1115,6 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                 </div>
 
                                 <div className="header-element">
-
                                 </div>
 
 
@@ -1249,32 +1229,31 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {blogPosts.map(({ domain, id,login,password,isActive }) => (
-                                        <tr>
-                                            <th scope="row">
-                                                <div className="d-flex align-items-center">
-                                                    {id}
-                                                </div>
-                                            </th>
-                                            <td>{login}</td>
-                                            <td>{domain}</td>
-                                            <td>{password}</td>
-                                            <td>
-                                                <div className="hstack gap-2 flex-wrap">
+                                        {post.map(({ domain, id,login,password,isActive }) => (
+                                            <tr>
+                                                <th scope="row">
+                                                    <div className="d-flex align-items-center">
+                                                        {id}
+                                                    </div>
+                                                </th>
+                                                <td>{login}</td>
+                                                <td>{domain}</td>
+                                                <td>{password}</td>
+                                                <td>
+                                                    <div className="hstack gap-2 flex-wrap">
 
-                                                    <Link href={`/admin/${id}`}><i
-                                                        className="ri-edit-line"></i></Link>
-                                                    <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
-                                                        className="ri-delete-bin-5-line"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        <Link href={`/admin/${id}`}><i
+                                                            className="ri-edit-line"></i></Link>
+                                                        <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
+                                                            className="ri-delete-bin-5-line"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         ))}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
@@ -1371,10 +1350,14 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
     );
 };
 
-export default Index;
+export const getServerSideProps = buildServerSideProps<TBlogProps, TBlogQuery>(
+    async (ctx) => {
+        const query = ctx.query.query;
+        console.log(query)
+        const post = await fetch(`/tracks/search?query=${query}`);
 
+        return { post };
+    },
+);
 
-export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
-    const blogPosts = await fetch('/tracks/');
-    return { blogPosts};
-});
+export default Blog;

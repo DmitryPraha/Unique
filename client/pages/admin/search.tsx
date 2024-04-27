@@ -1,35 +1,73 @@
-import Head from "next/head";
-import React, {FC} from 'react';
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import {Router} from "next/router";
-import {ITrack} from "@/types/track";
-import TrackList from "@/components/TrackList";
-import {useTypedSelector} from "@/hooks/useTypedSelector";
-import {Provider} from "react-redux";
-import TrackItem from "@/components/TrackItem";
-import {NextThunkDispatch, wrapper} from "@/store";
-import {fetchTracks} from "@/store/actions-creators/track";
-import {BlogPost} from "@/shared/types/blog-post";
-import { useFeatures } from '@/hooks/useFeatures'
-import { buildServerSideProps } from '@/ssr/buildServerSideProps';
-import { fetch } from '../../shared/utils/fetch';
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState, ChangeEvent } from "react";
 import axios from "axios";
 
-type THomeProps = {
-    blogPosts: BlogPost[];
-};
+import Head from "next/head";
+interface iDefault {
+    defaultValue: string | null
+}
 
 
-const Index: FC<THomeProps> = ({ blogPosts }) => {
+const App = ({ defaultValue }: iDefault) => {
+    // initiate the router from next/navigation
 
+    const router = useRouter()
+
+    // We need to grab the current search parameters and use it as default value for the search input
+
+    const [inputValue, setValue] = useState(defaultValue)
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
+
+        const inputValue = event.target.value;
+
+        setValue(inputValue);
+
+    }
+
+
+
+    // If the user clicks enter on the keyboard, the input value should be submitted for search
+
+    // We are now routing the search results to another page but still on the same page
+
+
+    const handleSearch = () => {
+
+        axios
+            .get("http://localhost:4000/tracks/search"+`?query=${inputValue}`, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "x-rapidapi-host": "file-upload8.p.rapidapi.com",
+                    "x-rapidapi-key": "your-rapidapi-key-here",
+                },
+            })
+            .then((response) => {
+                // handle the response
+                console.log(response);
+            })
+            .catch((error) => {
+                // handle errors
+                console.log(error);
+            });
+
+        if (inputValue) return router.push(`/admin/searchPage?query=${inputValue}`);
+
+        if (!inputValue) return router.push("/")
+
+    }
+
+
+    const handleKeyPress = (event: { key: any; }) => {
+
+        if (event.key === "Enter") return handleSearch()
+
+    }
 
     return (
         <>
             <Head>
-                <title>Админ панель</title>
+                <title>Поиск</title>
                 <script type="text/javascript" src="/styles/choices.min.js"></script>
                 <script type="text/javascript" src="/styles/main.js"></script>
                 <script type="text/javascript" src="/../public/styles/custom-switcher.min.js"></script>
@@ -43,9 +81,6 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div>
-
-
-
                 <div className="offcanvas offcanvas-end" tabIndex="-1" id="switcher-canvas"
                      aria-labelledby="offcanvasRightLabel">
                     <div className="offcanvas-header border-bottom">
@@ -562,35 +597,32 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                     <header className="app-header">
 
                         <div className="main-header-container container-fluid">
-
-
                             <div className="header-content-left">
-
                                 <div className="header-element">
                                     <div className="horizontal-logo">
                                         <a href="" className="header-logo">
-                                            <img src="/images/brand-logos/desktop-logo.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-logo"/>
-                                            <img src="/images/brand-logos/toggle-logo.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="toggle-logo"/>
-                                            <img src="/images/brand-logos/desktop-dark.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-dark"/>
-                                            <img src="/images/brand-logos/toggle-dark.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="toggle-dark"/>
-                                            <img src="/images/brand-logos/desktop-white.png" alt="logo"
+                                            <img src="/images/logo1.png" alt="logo"
                                                  className="desktop-white"/>
-                                            <img src="/images/brand-logos/toggle-white.png"
+                                            <img src="/images/logo1.png"
                                                  alt="logo" className="toggle-white"/>
                                         </a>
                                     </div>
                                 </div>
+
 
                                 <div className="header-element">
                                     <a aria-label="Hide Sidebar"
                                        className="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle"
                                        data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
                                 </div>
-
 
                             </div>
 
@@ -1235,48 +1267,21 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                 </div>
                             </div>
                             <div className="row">
+                                <input type="text"
 
-                                <div className="table-responsive">
-                                    <table className="table text-nowrap table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Логин</th>
-                                            <th scope="col">Домен</th>
-                                            <th scope="col">Пароль</th>
-                                            <th scope="col">Действие</th>
+                                       id="inputId"
 
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {blogPosts.map(({ domain, id,login,password,isActive }) => (
-                                        <tr>
-                                            <th scope="row">
-                                                <div className="d-flex align-items-center">
-                                                    {id}
-                                                </div>
-                                            </th>
-                                            <td>{login}</td>
-                                            <td>{domain}</td>
-                                            <td>{password}</td>
-                                            <td>
-                                                <div className="hstack gap-2 flex-wrap">
+                                       placeholder="Поиск"
 
-                                                    <Link href={`/admin/${id}`}><i
-                                                        className="ri-edit-line"></i></Link>
-                                                    <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
-                                                        className="ri-delete-bin-5-line"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                       value={inputValue ?? ""} onChange={handleChange}
+
+                                       onKeyDown={handleKeyPress}
+
+                                       className="bg-[transparent] outline-none border-none w-full py-3 pl-2 pr-3" />
                             </div>
-
                         </div>
                     </div>
+
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -1368,13 +1373,10 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 <div id="responsive-overlay"></div>
             </div>
         </>
-    );
-};
 
-export default Index;
+    )
 
+}
 
-export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
-    const blogPosts = await fetch('/tracks/');
-    return { blogPosts};
-});
+export default App;
+

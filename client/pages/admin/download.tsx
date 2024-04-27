@@ -2,9 +2,36 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import {useState} from "react";
+import axios from "axios";
+import {useRouter} from "next/router";
 
-export default function Admin() {
-    let none;
+const App = () => {
+    const handleFileUpload = (event) => {
+        // get the selected file from the input
+        const file = event.target.files[0];
+        // create a new FormData object and append the file to it
+        const formData = new FormData();
+        formData.append("file", file);
+        // make a POST request to the File Upload API with the FormData object and Rapid API headers
+        axios
+            .post("http://localhost:4000/tracks/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "x-rapidapi-host": "file-upload8.p.rapidapi.com",
+                    "x-rapidapi-key": "your-rapidapi-key-here",
+                },
+            })
+            .then((response) => {
+                // handle the response
+                console.log(response);
+            })
+            .catch((error) => {
+                // handle errors
+                console.log(error);
+            });
+    };
+
     return (
         <>
             <Head>
@@ -1208,6 +1235,7 @@ export default function Admin() {
                                 <div className="col-xl-12">
                                     <div className="card custom-card">
                                         <div className="card-body add-products p-0">
+
                                             <div className="p-4">
                                                 <div className="row gx-5">
                                                     <div className="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
@@ -1217,11 +1245,23 @@ export default function Admin() {
                                                                     <div className="col-xl-12">
                                                                         <p className="fw-semibold mb-2 fs-14">Загрузка
                                                                             файла :</p>
+                                                                       <form>
                                                                         <input type="file" className="product-Images"
-                                                                               name="filepond" multiple
+                                                                               name="file"
+                                                                               id="file"
+                                                                               onChange={handleFileUpload}
+                                                                               multiple
                                                                                data-allow-reorder="true"
-                                                                               data-max-file-size="3MB"
-                                                                               data-max-files="6"/>
+
+                                                                        />
+                                                                        <div
+                                                                            className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
+                                                                            <button type="submit" className="btn btn-success-light m-1">Добавить файл<i
+                                                                                className="bi bi-download ms-2"></i></button>
+
+                                                                        </div>
+                                                                       </form>
+
                                                                     </div>
                                                                     <div className="col-xl-6">
 
@@ -1377,18 +1417,20 @@ export default function Admin() {
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
-                                            <div
-                                                className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
-                                                <button className="btn btn-success-light m-1">Добавить файл<i
-                                                    className="bi bi-download ms-2"></i></button>
-                                            </div>
+
+
                                         </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -1482,3 +1524,7 @@ export default function Admin() {
         </>
     );
 }
+
+
+export default App;
+

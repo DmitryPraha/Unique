@@ -1175,6 +1175,12 @@ export default function Admin() {
                                     <span className="side-menu__label">Отправление</span>
                                 </a>
                             </li>
+                             <li className="slide">
+                            <a href="/admin/search" className="side-menu__item">
+                                <i className="bx bx-task side-menu__icon"></i>
+                                <span className="side-menu__label">Поиск</span>
+                            </a>
+                        </li>
 
                         </ul>
                         <div className="slide-right" id="slide-right">

@@ -1210,7 +1210,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
 
 
                         <div className="mb-4">
-                            <p className="fs-15 fw-semibold mb-2">Product Details :</p>
+                            <p className="fs-15 fw-semibold mb-2">Подробнее :</p>
                             <div className="row">
                                 <div className="col-xl-10">
                                     <div className="table-responsive">
@@ -1228,22 +1228,6 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                                 </th>
                                                 <td>
                                                     {post.domain}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" className="fw-semibold">
-                                                    Пароль
-                                                </th>
-                                                <td>
-                                                    {post.password}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" className="fw-semibold">
-                                                    Пользователь
-                                                </th>
-                                                <td>
-                                                    Пока в разработке
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -1353,7 +1337,7 @@ export const getServerSideProps = buildServerSideProps<TBlogProps, TBlogQuery>(
     async (ctx) => {
         const id = ctx.query.id;
 
-        const post = await fetch(`/tracks/${id}`);
+        const post = await fetch(`/domain/${id}`);
 
         return { post };
     },

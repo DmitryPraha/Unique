@@ -6,6 +6,9 @@ export class Track {
     id: number;
 
     @Column({ type: 'varchar', default: ''})
+    login: string;
+
+    @Column({ type: 'varchar', default: ''})
     domain: string;
 
     @Column({ type: 'varchar', default: ''})

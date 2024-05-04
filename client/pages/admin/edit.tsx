@@ -1,9 +1,9 @@
 import Head from "next/head";
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import {Router} from "next/router";
+import {Router, useRouter} from "next/router";
 import {ITrack} from "@/types/track";
 import TrackList from "@/components/TrackList";
 import {useTypedSelector} from "@/hooks/useTypedSelector";

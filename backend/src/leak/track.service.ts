@@ -80,12 +80,10 @@ export class TrackService{
             const lines = data.trim().split('\n');
             const entities = [];
             lines.forEach(line => {
-                const [domain, email, password] = line.trim().split(' ');
-                entities.push({domain, password});
+                const [domain, login, password] = line.trim().split(' ');
+                entities.push({domain,login,password});
             });
             return this.trackRepository.save(entities);
-            //return this.trackRepository.save(entities);
-            //return entities;
         } catch (err) {
             console.error('Ошибка чтения файла:', err);
             return null;

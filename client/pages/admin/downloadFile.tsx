@@ -25,28 +25,29 @@ type THomeProps = {
 
 const Index: FC<THomeProps> = ({ blogPosts }) => {
 
-    const [data, setData] = useState({
-        domain: "",
-    });
-
-    const router = useRouter()
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-        setData({
-            ...data,
-            [e.target.name]: value
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const userData = {
-            domain: data.domain,
-        };
-        //const jsonData = JSON.stringify(userData);
-        axios.post("http://localhost:4000/domain", userData).then(resp => router.push('/admin/domain')).catch(e => console.log(e));
-
+    const handleFileUpload = (event) => {
+        // get the selected file from the input
+        const file = event.target.files[0];
+        // create a new FormData object and append the file to it
+        const formData = new FormData();
+        formData.append("file", file);
+        // make a POST request to the File Upload API with the FormData object and Rapid API headers
+        axios
+            .post("http://localhost:4000/tracks/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "x-rapidapi-host": "file-upload8.p.rapidapi.com",
+                    "x-rapidapi-key": "your-rapidapi-key-here",
+                },
+            })
+            .then((response) => {
+                // handle the response
+                console.log(response);
+            })
+            .catch((error) => {
+                // handle errors
+                console.log(error);
+            });
     };
 
     return (
@@ -1246,57 +1247,200 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                 </div>
                             </div>
                             <div className="row">
-
                                 <div className="col-xl-12">
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="card custom-card">
-                                            <div className="card-body add-products p-0">
-                                                <div className="p-4">
-                                                    <div className="row gx-5">
-                                                        <div className="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
-                                                            <div className="card custom-card shadow-none mb-0 border-0">
-                                                                <div className="card-body p-0">
-                                                                    <div className="row gy-3">
-                                                                        <div className="col-xl-12">
-                                                                            <label htmlFor="product-name-add"
-                                                                                   className="form-label">Домен</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="product-name-add" placeholder=""
-                                                                                   name="domain"
-                                                                                   value={data.domain}
-                                                                                   onChange={handleChange}
+                                    <div className="card custom-card">
+                                        <div className="card-body add-products p-0">
+
+                                            <div className="p-4">
+                                                <div className="row gx-5">
+                                                    <div className="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
+                                                        <div className="card custom-card shadow-none mb-0 border-0">
+                                                            <div className="card-body p-0">
+                                                                <div className="row gy-3">
+                                                                    <div className="col-xl-12">
+                                                                        <p className="fw-semibold mb-2 fs-14">Просмотр файлов :</p>
+                                                                        <form>
+                                                                            <input type="file" className="product-Images"
+                                                                                   name="file"
+                                                                                   id="file"
+                                                                                   onChange={handleFileUpload}
+                                                                                   multiple
+                                                                                   data-allow-reorder="true"
                                                                             />
-                                                                            <label htmlFor="product-name-add"
-                                                                                   className="form-label mt-1 fs-12 op-5 text-muted mb-0"></label>
-                                                                        </div>
+                                                                            <div
+                                                                                className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
+                                                                                <button type="submit" className="btn btn-success-light m-1">Добавить файл<i
+                                                                                    className="bi bi-download ms-2"></i></button>
+
+                                                                            </div>
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+
+
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+
+                                                                    </div>
+                                                                    <div className="custom-class-by-me">
+                                                                        <label htmlFor="product-color-add"
+                                                                               className="form-label">Colors</label>
+                                                                        <select className="form-control"
+                                                                                name="product-color-add"
+                                                                                id="product-color-add" multiple>
+                                                                            <option value="White">White</option>
+                                                                            <option value="Black">Black</option>
+                                                                            <option value="Red">Red</option>
+                                                                            <option value="Orange">Orange</option>
+                                                                            <option value="Yellow">Yellow</option>
+                                                                            <option value="Green">Green</option>
+                                                                            <option value="Blue">Blue</option>
+                                                                            <option value="Pink">Pink</option>
+                                                                            <option value="Purple">Purple</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+
+                                                                    </div>
+                                                                    <div className="col-xl-12">
+
+                                                                    </div>
+                                                                    <div className="col-xl-12">
 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
-                                                </div>
-                                                <div
-                                                    className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
-                                                    <button className="btn btn-success-light m-1" type="submit">Сохранить<i
-                                                        className="bi bi-download ms-2"></i></button>
+                                                    <div className="custom-class-by-me">
+                                                        <div className="card custom-card shadow-none mb-0 border-0">
+                                                            <div className="card-body p-0">
+                                                                <div className="row gy-4">
+                                                                    <div className="col-xl-4">
+                                                                        <label htmlFor="product-actual-price"
+                                                                               className="form-label">Actual
+                                                                            Price</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="product-actual-price"
+                                                                               placeholder="Actual Price"/>
+                                                                    </div>
+                                                                    <div className="col-xl-4">
+                                                                        <label htmlFor="product-dealer-price"
+                                                                               className="form-label">Dealer
+                                                                            Price</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="product-dealer-price"
+                                                                               placeholder="Dealer Price"/>
+                                                                    </div>
+                                                                    <div className="col-xl-4">
+                                                                        <label htmlFor="product-discount"
+                                                                               className="form-label">Discount</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="product-discount"
+                                                                               placeholder="Discount in %"/>
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+                                                                        <label htmlFor="product-type"
+                                                                               className="form-label">Product
+                                                                            Type</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="product-type" placeholder="Type"/>
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+                                                                        <label htmlFor="product-discount"
+                                                                               className="form-label">Item
+                                                                            Weight</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="product-discount1"
+                                                                               placeholder="Weight in gms"/>
+                                                                    </div>
+                                                                    <div
+                                                                        className="col-xl-12 product-documents-container">
+                                                                    </div>
+                                                                    <div
+                                                                        className="col-xl-12 product-documents-container">
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+                                                                        <label htmlFor="publish-date"
+                                                                               className="form-label">Publish
+                                                                            Date</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="publish-date"
+                                                                               placeholder="Choose date"/>
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+                                                                        <label htmlFor="publish-time"
+                                                                               className="form-label">Publish
+                                                                            Time</label>
+                                                                        <input type="text" className="form-control"
+                                                                               id="publish-time"
+                                                                               placeholder="Choose time"/>
+                                                                    </div>
+                                                                    <div className="custom-class-by-me">
+                                                                        <label htmlFor="product-status-add"
+                                                                               className="form-label">Published
+                                                                            Status</label>
+                                                                        <select className="form-control" data-trigger
+                                                                                name="product-status-add"
+                                                                                id="product-status-add">
+                                                                            <option value="">Select</option>
+                                                                            <option value="Published">Published</option>
+                                                                            <option value="Scheduled">Scheduled</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div className="col-xl-6">
+                                                                        <label htmlFor="product-tags"
+                                                                               className="form-label">Product
+                                                                            Tags</label>
+                                                                        <select className="form-control"
+                                                                                name="product-tags" id="product-tags"
+                                                                                multiple>
+                                                                            <option value="Relaxed" selected>Relaxed
+                                                                            </option>
+                                                                            <option value="Solid">Solid</option>
+                                                                            <option value="Washed">Washed</option>
+                                                                            <option value="Plain" selected>Plain
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div className="col-xl-12">
+                                                                        <label htmlFor="product-status-add1"
+                                                                               className="form-label">Availability</label>
+                                                                        <select className="form-control" data-trigger
+                                                                                name="product-status-add1"
+                                                                                id="product-status-add1">
+                                                                            <option value="">Select</option>
+                                                                            <option value="In Stock">In Stock</option>
+                                                                            <option value="Out Of Stock">Out Of Stock
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-
-
-
-
+                                    </div>
                                 </div>
 
+                                <h2>Просмотр ранее загруженных утечек</h2>
                                 <div className="table-responsive">
                                     <table className="table text-nowrap table-bordered">
                                         <thead>
                                         <tr>
                                             <th scope="col">Id</th>
+                                            <th scope="col">URL</th>
                                             <th scope="col">Домен</th>
+                                            <th scope="col">Пароль</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -1307,7 +1451,11 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                                         {id}
                                                     </div>
                                                 </th>
+
                                                 <td>{domain}</td>
+                                                <td>{login}</td>
+                                                <td>{password}</td>
+
                                                 <td>
                                                     <div className="hstack gap-2 flex-wrap">
 
@@ -1424,6 +1572,6 @@ export default Index;
 
 
 export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
-    const blogPosts = await fetch('/domain/');
+    const blogPosts = await fetch('/tracks/');
     return { blogPosts};
 });

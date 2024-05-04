@@ -7,6 +7,9 @@ export class CreateTrackDto{
     id: number;
 
     @IsString()
+    login: string;
+
+    @IsString()
     domain: string;
 
     @IsString()

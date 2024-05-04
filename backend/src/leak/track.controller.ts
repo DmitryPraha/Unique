@@ -16,6 +16,7 @@ import {Track} from "./entities/track.entity";
 import {AnyFilesInterceptor, FileInterceptor, MulterModule} from "@nestjs/platform-express";
 import { diskStorage } from 'multer'
 import { extname } from 'path'
+import {Domain} from "../domain/entities/domain.entity";
 
 const storage = diskStorage({
     destination: './static/files/',
@@ -33,8 +34,13 @@ export class TrackController{
 
     constructor(private trackService: TrackService) {}
 
+    //@Post()
+    //  async create(@Body() dto: CreateTrackDto): Promise<Domain>{
+    //    return await this.trackService.create(dto)
+    //}
+
     @Post()
-      async create(@Body() dto: CreateTrackDto): Promise<Track>{
+    async create(@Body() dto: CreateTrackDto): Promise<Track>{
         return await this.trackService.create(dto)
     }
 

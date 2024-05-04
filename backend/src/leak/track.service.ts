@@ -25,24 +25,25 @@ export class TrackService{
     //Добавление элемента
     async create(data: CreateTrackDto): Promise<Track>
     {
-        const category1 = new Domain()
-        category1.domain = "animals"
-        await this.domainRepository.manager.save(category1)
+        //const category1 = new Track()
+       // category1.domain = "animals"
+       // category1.login = "animals"
+       // await this.trackRepository.manager.save(category1)
 
-        const category2 = new Domain()
-        category2.domain = "zoo"
-        await this.domainRepository.manager.save(category2)
+      //  const category2 = new Track()
+      //  category2.domain = "zoo"
+      //  category2.login = "zoo"
+       // await this.trackRepository.manager.save(category2)
 
-        const question = new Track()
-        question.domain = "dogs"
-        question.login = "who let the dogs out?"
-        question.attendees = [category1, category2]
-        return this.trackRepository.manager.save(question)
+      //  const question = new Domain()
+      //  question.domain = "dogs"
+      //  question.tracks = [category1, category2]
+      //  return this.domainRepository.manager.save(question)
 
-        //const product = new Track();
-        //product.domain = data.domain;
-        //product.password = data.password;
-        //return await this.trackRepository.save(product);
+        const product = new Track();
+        product.domain = data.domain;
+        product.password = data.password;
+        return await this.trackRepository.save(product);
     }
 
 

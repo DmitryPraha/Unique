@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable} from 'typeorm';
 import {Track} from "../../leak/entities/track.entity";
 
-@Entity({name: 'domains'})
+@Entity()
 export class Domain {
     @PrimaryGeneratedColumn()
     id: number;

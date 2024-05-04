@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable} from 'typeorm';
 import {Domain} from "../../domain/entities/domain.entity";
 
-@Entity({name: 'tracks'})
+@Entity()
 export class Track {
     @PrimaryGeneratedColumn()
     id: number;

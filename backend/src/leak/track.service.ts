@@ -25,7 +25,6 @@ export class TrackService{
     //Добавление элемента
     async create(data: CreateTrackDto): Promise<Track>
     {
-
         const category1 = new Domain()
         category1.domain = "animals"
         await this.domainRepository.manager.save(category1)
@@ -40,8 +39,7 @@ export class TrackService{
         question.attendees = [category1, category2]
         return this.trackRepository.manager.save(question)
 
-
-       // const product = new Track();
+        //const product = new Track();
         //product.domain = data.domain;
         //product.password = data.password;
         //return await this.trackRepository.save(product);

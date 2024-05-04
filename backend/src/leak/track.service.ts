@@ -56,7 +56,7 @@ export class TrackService{
         async search(domain: string): Promise<Track[][]> {
            const user = this.tracksRepository
                .createQueryBuilder()
-               .where("track.domain = :domain", { domain: domain }).getMany();
+               .where("leak.domain = :domain", { domain: domain }).getMany();
            return user;
         }
 

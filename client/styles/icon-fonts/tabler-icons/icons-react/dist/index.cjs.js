@@ -59906,7 +59906,7 @@ function IconPlayerTrackNext(_ref) {
 
   return /*#__PURE__*/React__namespace.createElement("svg", _extends({
     xmlns: "http://www.w3.org/2000/svg",
-    className: "icon icon-tabler icon-tabler-player-track-next",
+    className: "icon icon-tabler icon-tabler-player-leak-next",
     width: size,
     height: size,
     viewBox: "0 0 24 24",
@@ -59939,7 +59939,7 @@ function IconPlayerTrackPrev(_ref) {
 
   return /*#__PURE__*/React__namespace.createElement("svg", _extends({
     xmlns: "http://www.w3.org/2000/svg",
-    className: "icon icon-tabler icon-tabler-player-track-prev",
+    className: "icon icon-tabler icon-tabler-player-leak-prev",
     width: size,
     height: size,
     viewBox: "0 0 24 24",
@@ -73513,7 +73513,7 @@ function IconTrack(_ref) {
 
   return /*#__PURE__*/React__namespace.createElement("svg", _extends({
     xmlns: "http://www.w3.org/2000/svg",
-    className: "icon icon-tabler icon-tabler-track",
+    className: "icon icon-tabler icon-tabler-leak",
     width: size,
     height: size,
     viewBox: "0 0 24 24",

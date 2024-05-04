@@ -1,18 +1,20 @@
-import Link from 'next/link';
-import React, { FC } from 'react';
-import { buildServerSideProps } from '@/ssr/buildServerSideProps';
-import {BlogPost} from "@/shared/types/blog-post";
-import { fetch } from '../../shared/utils/fetch';
 import Head from "next/head";
-type TBlogProps = {
-    post: BlogPost;
-};
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import {useState} from "react";
+import axios from "axios";
+import {useRouter} from "next/router";
+import {buildServerSideProps} from "@/ssr/buildServerSideProps";
+import {fetch} from "@/shared/utils/fetch";
 
-type TBlogQuery = {
-    query: string;
-};
+const App = () => {
 
-const Blog: FC<TBlogProps> = ({ post = {} }) => {
+
+
+
+
+
     return (
         <>
             <Head>
@@ -36,6 +38,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                         <h5 className="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
+
                     <div className="offcanvas-body">
                         <nav className="border-bottom border-block-end-dashed">
                             <div className="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
@@ -546,21 +549,24 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                     <header className="app-header">
 
                         <div className="main-header-container container-fluid">
+
+
                             <div className="header-content-left">
+
                                 <div className="header-element">
                                     <div className="horizontal-logo">
                                         <a href="" className="header-logo">
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-logo.png" alt="logo"
                                                  className="desktop-logo"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/toggle-logo.png" alt="logo"
                                                  className="toggle-logo"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-dark.png" alt="logo"
                                                  className="desktop-dark"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/toggle-dark.png" alt="logo"
                                                  className="toggle-dark"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-white.png" alt="logo"
                                                  className="desktop-white"/>
-                                            <img src="/images/logo1.png"
+                                            <img src="/images/brand-logos/toggle-white.png"
                                                  alt="logo" className="toggle-white"/>
                                         </a>
                                     </div>
@@ -1093,6 +1099,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                             </div>
                                         </div>
                                     </a>
+
                                     <ul className="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
                                         aria-labelledby="mainHeaderProfile">
                                         <li><a className="dropdown-item d-flex" href="profile.html"><i
@@ -1112,10 +1119,17 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                             className="ti ti-logout fs-18 me-2 op-7"></i>Log Out</a></li>
                                     </ul>
                                 </div>
+
                                 <div className="header-element">
+
                                 </div>
+
+
                             </div>
+
+
                         </div>
+
                     </header>
 
                     <aside className="app-sidebar sticky" id="sidebar">
@@ -1196,47 +1210,13 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                 </div>
                             </div>
                             <div className="row">
+                                <h2>Здесь выводим все домены</h2>
 
-                                <div className="table-responsive">
-                                    <table className="table text-nowrap table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Логин</th>
-                                            <th scope="col">Домен</th>
-                                            <th scope="col">Пароль</th>
-                                            <th scope="col">Действие</th>
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {post.map(({ domain, id,login,password,isActive }) => (
-                                            <tr>
-                                                <th scope="row">
-                                                    <div className="d-flex align-items-center">
-                                                        {id}
-                                                    </div>
-                                                </th>
-                                                <td>{login}</td>
-                                                <td>{domain}</td>
-                                                <td>{password}</td>
-                                                <td>
-                                                    <div className="hstack gap-2 flex-wrap">
-
-                                                        <Link href={`/admin/${id}`}><i
-                                                            className="ri-edit-line"></i></Link>
-                                                        <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
-                                                            className="ri-delete-bin-5-line"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
+
                     </div>
+
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -1329,16 +1309,8 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
             </div>
         </>
     );
-};
+}
 
-export const getServerSideProps = buildServerSideProps<TBlogProps, TBlogQuery>(
-    async (ctx) => {
-        const query = ctx.query.query;
-        console.log(query)
-        const post = await fetch(`/tracks/search?query=${query}`);
 
-        return { post };
-    },
-);
+export default App;
 
-export default Blog;

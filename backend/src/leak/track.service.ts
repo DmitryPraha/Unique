@@ -99,12 +99,12 @@ export class TrackService{
             lines.forEach(line => {
                 const [domain, login, password] = line.trim().split(' ');
                 let result = domain.replace('https://', '');
-                console.log(result)
+                //console.log(result)
 
                 if(result == 'zenit.ru')
                 {
                     arr.push({domain,login,password})
-                    console.log(arr)
+                    //console.log(arr)
                 }
                 //let str = "https://ozon.ru/";
                 //let result = str.match(/ozon.ru/g);
@@ -124,10 +124,31 @@ export class TrackService{
             //    .forEach(key => console.log(key, arr[key]));
 
 
+            for (const line of lines) {
+                const [domain, login, password] = line.trim().split(' ');
+                let result = domain.replace('https://', '');
+                //console.log(result)
 
+
+                let category1 = new Track()
+                category1.domain = "dog"
+                category1.login = "dog"
+                await this.trackRepository.manager.save(category1)
+
+
+                let question = new Domain()
+                question.domain = "dogs"
+                question.tracks = [category1]
+
+                console.log(question)
+
+                await this.domainRepository.manager.save(question)
+
+
+            }
 
             for (const line of arr) {
-                console.log(arr[i])
+                //console.log(arr[i])
                 let category1 = new Track()
                 category1.domain = "dog"
                 category1.login = "dog"
@@ -143,7 +164,7 @@ export class TrackService{
 
             for (var i = 0; i < arr.length; i++)
             {
-                console.log(arr[i])
+                //console.log(arr[i])
                 let category1 = new Track()
                 category1.domain = "dog"
                 category1.login = "dog"

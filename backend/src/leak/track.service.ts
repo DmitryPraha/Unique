@@ -3,13 +3,8 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Track} from "./entities/track.entity";
 import {DeepPartial, DeleteResult, getRepository, ObjectId, Repository} from "typeorm";
 import {CreateTrackDto} from "./dto/create-track.dto";
-import * as domain from "domain";
-import {count, from, Observable} from "rxjs";
-import * as fs from "fs";
-import * as readline from "readline";
-import {toJson} from 'plain-text-data-to-json'
-import {readFile} from "fs";
 import {FileService, FileType} from "../file/file.service";
+import {Domain} from "../domain/entities/domain.entity";
 
 
 @Injectable()
@@ -28,6 +23,8 @@ export class TrackService{
     //Добавление элемента
     async create(data: CreateTrackDto): Promise<Track>
     {
+
+
         const product = new Track();
         product.domain = data.domain;
         product.password = data.password;

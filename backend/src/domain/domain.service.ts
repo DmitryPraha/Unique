@@ -3,6 +3,7 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {DeepPartial, DeleteResult, getRepository, ObjectId, Repository} from "typeorm";
 import {Domain} from "./entities/domain.entity";
 import {CreateDomainDto} from "./dto/create-domain.dto";
+import {Track} from "../leak/entities/track.entity";
 
 @Injectable()
 
@@ -19,8 +20,11 @@ export class DomainService{
     //Добавление элемента
     async create(data: CreateDomainDto): Promise<Domain>
     {
-        const domain = new Domain();
-        domain.domain = data.domain;
+        //const domain = new Domain();
+        //domain.domain = data.domain;
+        const domain = this.domainRepository.create(data);
+        domain.tracks = data.trackId(id => ({...new Track(), id}));
+
         return await this.domainRepository.save(domain);
     }
 

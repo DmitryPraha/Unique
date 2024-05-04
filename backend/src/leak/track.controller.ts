@@ -74,15 +74,8 @@ export class TrackController{
     uploadFile(@UploadedFiles() files) {
         //console.log(files);
         //return { message: 'File uploaded successfully!', filename: files.filename };
-        return this.trackService.filesFunction(files);
+        return this.trackService.filesFunction(files)
         //console.log(files);
     }
-
-    //@Post('upload')
-    //@UseInterceptors(AnyFilesInterceptor())
-    //uploadFile(@UploadedFiles() files) {
-    //    return this.trackService.filesFunction(files);
-    //    //console.log(files);
-    //}
 
 }

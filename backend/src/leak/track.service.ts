@@ -61,17 +61,13 @@ export class TrackService{
         }
 
 
-    async filesFunction(dataFile)
+    async filesFunction(dataFile, count = 0)
     {
         let path = '';
         dataFile.forEach(function(item) {
             path = item.originalname;
             //console.log(item.originalname);
         });
-        //console.log(path);
-        //return dataFile;
-        //const obj = JSON.parse(dataFile);
-        //return obj.originalname;
         const fs = require('fs');
         const data = fs.readFileSync('./static/files/'+path, 'utf8');
         console.log(data);
@@ -83,6 +79,8 @@ export class TrackService{
                 const [domain, login, password] = line.trim().split(' ');
                 entities.push({domain,login,password});
             });
+            console.log(entities.length)
+
             return this.trackRepository.save(entities);
         } catch (err) {
             console.error('Ошибка чтения файла:', err);
@@ -95,6 +93,5 @@ export class TrackService{
         } else {
             console.log('Не удалось прочитать данные из файла.');
         }
-
     }
 }

@@ -17,21 +17,33 @@ import { buildServerSideProps } from '@/ssr/buildServerSideProps';
 import { fetch } from '../../shared/utils/fetch';
 import Link from "next/link";
 import axios from "axios";
-
 type THomeProps = {
     blogPosts: BlogPost[];
 };
 
-
+const baseURL = "http://localhost:4000/data";
 const Index: FC<THomeProps> = ({ blogPosts }) => {
 
+    const [post, setPost] = React.useState(null);
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setPost(response.data);
+        });
+    }, []);
+
+
     const handleFileUpload = (event) => {
+
+
         // get the selected file from the input
         const file = event.target.files[0];
         // create a new FormData object and append the file to it
         const formData = new FormData();
         formData.append("file", file);
         // make a POST request to the File Upload API with the FormData object and Rapid API headers
+
+
         axios
             .post("http://localhost:4000/tracks/upload", formData, {
                 headers: {
@@ -41,7 +53,8 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 },
             })
             .then((response) => {
-                // handle the response
+
+                alert("Файл успешно добавлен." + " Имя файла: " + file.name)
                 console.log(response);
             })
             .catch((error) => {
@@ -49,6 +62,9 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 console.log(error);
             });
     };
+
+
+
 
     return (
         <>
@@ -67,8 +83,6 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div>
-
-
 
                 <div className="offcanvas offcanvas-end" tabIndex="-1" id="switcher-canvas"
                      aria-labelledby="offcanvasRightLabel">
@@ -1275,7 +1289,9 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                                                             </div>
                                                                         </form>
 
+
                                                                     </div>
+                                                                    Ранее загруженные файлы: {post + " "}
                                                                     <div className="col-xl-6">
 
 
@@ -1432,7 +1448,8 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                     </div>
                                 </div>
 
-                                <h2>Просмотр ранее загруженных утечек</h2>
+
+                                <h6>Просмотр ранее загруженных утечек</h6>
                                 <div className="table-responsive">
                                     <table className="table text-nowrap table-bordered">
                                         <thead>
@@ -1467,6 +1484,7 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                                 </td>
                                             </tr>
                                         ))}
+
                                         </tbody>
                                     </table>
                                 </div>

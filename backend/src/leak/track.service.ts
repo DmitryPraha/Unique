@@ -23,27 +23,27 @@ export class TrackService{
     ) {}
 
     //Добавление элемента
-    async create(data: CreateTrackDto): Promise<Track>
+    async create(data: CreateTrackDto): Promise<Domain>
     {
-        //const category1 = new Track()
-       // category1.domain = "animals"
-       // category1.login = "animals"
-       // await this.trackRepository.manager.save(category1)
+        const category1 = new Track()
+        category1.domain = "animals"
+        category1.login = "animals"
+        await this.trackRepository.manager.save(category1)
 
-      //  const category2 = new Track()
-      //  category2.domain = "zoo"
-      //  category2.login = "zoo"
-       // await this.trackRepository.manager.save(category2)
+        const category2 = new Track()
+        category2.domain = "zoo"
+        category2.login = "zoo"
+        await this.trackRepository.manager.save(category2)
 
-      //  const question = new Domain()
-      //  question.domain = "dogs"
-      //  question.tracks = [category1, category2]
-      //  return this.domainRepository.manager.save(question)
+        const question = new Domain()
+        question.domain = "dogs"
+        question.tracks = [category1, category2]
+        return this.domainRepository.manager.save(question)
 
-        const product = new Track();
-        product.domain = data.domain;
-        product.password = data.password;
-        return await this.trackRepository.save(product);
+        //const product = new Track();
+        //product.domain = data.domain;
+        //product.password = data.password;
+        //return await this.trackRepository.save(product);
     }
 
 
@@ -82,17 +82,79 @@ export class TrackService{
         });
         const fs = require('fs');
         const data = fs.readFileSync('./static/files/'+path, 'utf8');
-        console.log(data);
+        //console.log(data);
+        //let str = "I love JavaScript";
+        //let result = str.match(/Java(Script)/g);
+        //alert( result[0] ); // JavaScript
+        //alert( result.length ); // 1
+        //let str = "https://ozon.ru/";
+        //let result = str.match(/ozon.ru/g);
+        //console.log(result)
+
         try {
             //const data = fs.readFileSync(data, 'utf8');
             const lines = data.trim().split('\n');
             const entities = [];
+            const arr = [];
             lines.forEach(line => {
                 const [domain, login, password] = line.trim().split(' ');
+                let result = domain.replace('https://', '');
+                console.log(result)
+
+                if(result == 'zenit.ru')
+                {
+                    arr.push({domain,login,password})
+                    console.log(arr)
+                }
+                //let str = "https://ozon.ru/";
+                //let result = str.match(/ozon.ru/g);
                 entities.push({domain,login,password});
             });
-            console.log(entities.length)
+            //tracks.forEach((element) =>
+            //console.log(domain)
+            // );
+            //console.log(arr)
+            //console.log(entities.length)
+            //const question = new Domain()
+            // question.domain = "dogs"
+            //question.tracks = arr
 
+            //Object.keys(arr)
+            //    .sort(/* Здесь можно наводить любой порядок, какой душе угодно*/)
+            //    .forEach(key => console.log(key, arr[key]));
+
+
+
+
+            for (const line of arr) {
+                console.log(arr[i])
+                let category1 = new Track()
+                category1.domain = "dog"
+                category1.login = "dog"
+                await this.trackRepository.manager.save(category1)
+
+
+                let question = new Domain()
+                question.domain = "dogs"
+                question.tracks = [category1]
+                await this.domainRepository.manager.save(question)
+            }
+
+
+            for (var i = 0; i < arr.length; i++)
+            {
+                console.log(arr[i])
+                let category1 = new Track()
+                category1.domain = "dog"
+                category1.login = "dog"
+                await this.trackRepository.manager.save(category1)
+
+
+                let question = new Domain()
+                question.domain = "dogs"
+                question.tracks = [category1]
+                await this.domainRepository.manager.save(question)
+            }
             return this.trackRepository.save(entities);
         } catch (err) {
             console.error('Ошибка чтения файла:', err);
@@ -101,7 +163,7 @@ export class TrackService{
         const entities = fs.readFileSync('./static/files/'+path, 'utf8');
 
         if (entities) {
-            console.log(entities);
+            //console.log(entities);
         } else {
             console.log('Не удалось прочитать данные из файла.');
         }

@@ -9,9 +9,9 @@ export class Domain {
     @Column({ type: 'varchar', default: ''})
     domain: string;
 
-    //@ManyToMany(() => Track)
-    //@JoinTable()
-    //tracks: Track[]
+    @ManyToMany(() => Track)
+    @JoinTable()
+    tracks: Track[]
     //@ManyToMany(() => Track, (tracks) => tracks.attendees)
     //@JoinTable()
     //tracks: Track[];

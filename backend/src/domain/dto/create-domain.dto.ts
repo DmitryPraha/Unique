@@ -9,5 +9,4 @@ export class CreateDomainDto{
     @IsString()
     domain: string;
 
-    trackId: any;
 }

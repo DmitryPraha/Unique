@@ -18,10 +18,11 @@ import {DomainModule} from "./domain/domain.module";
             port: 3306,
             username: 'root',
             password: 'root',
-            database: 'findler',
+            database: 'Dev',
             entities: [Track, Domain],
             synchronize: true,
         }),
+        TypeOrmModule.forFeature([Track,Domain]),
         DataModule,DomainModule
     ]
 

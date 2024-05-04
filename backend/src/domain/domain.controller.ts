@@ -6,17 +6,18 @@ import {
     Param,
     Post,
 } from "@nestjs/common";
-
-import {CreateDomainDto} from "./dto/create-domain.dto";
 import {ObjectId} from "typeorm";
 import {DomainService} from "./domain.service";
 import {Domain} from "./entities/domain.entity";
+import {CreateDomainDto} from "./dto/create-domain.dto";
+
 
 
 @Controller('/domain')
 export class DomainController{
 
     constructor(private domainService: DomainService) {}
+
 
     @Post()
     async create(@Body() dto: CreateDomainDto): Promise<Domain> {

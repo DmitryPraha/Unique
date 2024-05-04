@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToMany} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable} from 'typeorm';
 import {Domain} from "../../domain/entities/domain.entity";
 
 @Entity({name: 'tracks'})
@@ -18,6 +18,6 @@ export class Track {
     @Column({ default: true })
     isActive: boolean;
 
-    @ManyToMany(() => Domain, (domains) => domains.tracks)
-    domains: Domain[];
+    @ManyToMany(() => Domain, domains => domains.tracks)
+    attendees: Domain[]
 }

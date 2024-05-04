@@ -17,6 +17,8 @@ export class TrackService{
         private tracksRepository: Repository<Track[]>,
         @InjectRepository(Track)
         private trackRepository: Repository<Track>,
+        @InjectRepository(Domain)
+        private domainRepository: Repository<Track>,
         private fileService: FileService
     ) {}
 
@@ -24,11 +26,25 @@ export class TrackService{
     async create(data: CreateTrackDto): Promise<Track>
     {
 
+        const category1 = new Domain()
+        category1.domain = "animals"
+        await this.domainRepository.manager.save(category1)
 
-        const product = new Track();
-        product.domain = data.domain;
-        product.password = data.password;
-        return await this.trackRepository.save(product);
+        const category2 = new Domain()
+        category2.domain = "zoo"
+        await this.domainRepository.manager.save(category2)
+
+        const question = new Track()
+        question.domain = "dogs"
+        question.login = "who let the dogs out?"
+        question.attendees = [category1, category2]
+        return this.trackRepository.manager.save(question)
+
+
+       // const product = new Track();
+        //product.domain = data.domain;
+        //product.password = data.password;
+        //return await this.trackRepository.save(product);
     }
 
 

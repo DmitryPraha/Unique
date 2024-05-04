@@ -9,22 +9,8 @@ export class Domain {
     @Column({ type: 'varchar', default: ''})
     domain: string;
 
-    @ManyToMany(() => Track, (tracks) => tracks.domains)
-    @JoinTable(
-        {
-            name: 'domain_leak',
-            joinColumn: {
-                name: 'id_domain',
-                referencedColumnName: 'id',
-                foreignKeyConstraintName: 'domain_leak_id_domain',
-            },
-            inverseJoinColumn: {
-                name: 'id_leak',
-                referencedColumnName: 'id',
-                foreignKeyConstraintName: 'domain_leak_id_leak',
-            }
-        }
-    )
+    @ManyToMany(() => Track, (tracks) => tracks.attendees)
+    @JoinTable()
     tracks: Track[];
 
 }

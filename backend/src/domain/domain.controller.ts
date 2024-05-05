@@ -35,7 +35,7 @@ export class DomainController{
         return this.domainService.getOne(id);
     }
 
-    @Delete(':id')
+    @Get('/delete/:id')
     delete(@Param('id') id: ObjectId){
         return this.domainService.delete(id);
     }

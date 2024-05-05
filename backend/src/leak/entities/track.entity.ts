@@ -20,7 +20,7 @@ export class Track {
 
     @ManyToMany(() => Domain)
     @JoinTable()
-    domains: Domain[][]
+    domains: Domain[]
     //@ManyToMany(() => Domain, domains => domains.tracks)
     //attendees: Domain[]
 }

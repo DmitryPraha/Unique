@@ -1282,7 +1282,7 @@ export default function Page({
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">URL</th>
-                                                <th scope="col">Домен</th>
+                                                <th scope="col">Логин</th>
                                                 <th scope="col">Пароль</th>
                                             </tr>
                                             </thead>
@@ -1312,7 +1312,7 @@ export default function Page({
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">URL</th>
-                                                <th scope="col">Домен</th>
+                                                <th scope="col">Логин</th>
                                                 <th scope="col">Пароль</th>
                                             </tr>
                                             </thead>
@@ -1341,7 +1341,7 @@ export default function Page({
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">URL</th>
-                                                <th scope="col">Домен</th>
+                                                <th scope="col">Логин</th>
                                                 <th scope="col">Пароль</th>
                                             </tr>
                                             </thead>
@@ -1371,7 +1371,7 @@ export default function Page({
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">URL</th>
-                                                <th scope="col">Домен</th>
+                                                <th scope="col">Логин</th>
                                                 <th scope="col">Пароль</th>
                                             </tr>
                                             </thead>
@@ -1400,7 +1400,7 @@ export default function Page({
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">URL</th>
-                                                <th scope="col">Домен</th>
+                                                <th scope="col">Логин</th>
                                                 <th scope="col">Пароль</th>
                                             </tr>
                                             </thead>

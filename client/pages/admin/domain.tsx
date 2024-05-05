@@ -1313,7 +1313,7 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
 
                                                         <Link href={`/admin/${id}`}><i
                                                             className="ri-edit-line"></i></Link>
-                                                        <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
+                                                        <a href="" className="text-danger fs-14 lh-1"><i
                                                             className="ri-delete-bin-5-line"></i></a>
                                                     </div>
                                                 </td>

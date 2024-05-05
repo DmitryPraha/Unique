@@ -19,6 +19,8 @@ export class TrackService{
         private trackRepository: Repository<Track>,
         @InjectRepository(Domain)
         private domainRepository: Repository<Domain[]>,
+        @InjectRepository(Domain)
+        private domainsRepository: Repository<Domain>,
         private fileService: FileService
     ) {}
 
@@ -273,7 +275,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(6)
+                    //let zenit = await this.domainRepository.findOneById(6)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'amazon.com',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)
@@ -297,7 +303,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(5)
+                    //let zenit = await this.domainRepository.findOneById(5)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'wildberries.ru',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)
@@ -322,7 +332,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(4)
+                    //let zenit = await this.domainRepository.findOneById(4)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'rambler.ru',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)
@@ -346,7 +360,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(1)
+                    //let zenit = await this.domainRepository.findOneById(1)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'zenit.ru',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)
@@ -370,7 +388,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(2)
+                    //let zenit = await this.domainRepository.findOneById(2)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'ozon.ru',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)
@@ -394,7 +416,11 @@ export class TrackService{
                 {
                     //console.log(result)
                     //console.log(login)
-                    let zenit = await this.domainRepository.findOneById(3)
+                    //let zenit = await this.domainRepository.findOneById(3)
+                    let zenit = await this.domainsRepository.findOne({
+                        where: {
+                            domain: 'cska.ru',
+                        }})
                     //console.log(zenit)
                     //console.log(zenit)
                     //arr.push(zenit)

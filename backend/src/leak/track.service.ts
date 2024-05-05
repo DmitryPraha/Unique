@@ -47,15 +47,18 @@ export class TrackService{
     }
 
 
+    async
+
     //Возвращение всех записей
     async getAll(count = 10 , offset = 0): Promise<Track[][]>{
-
-
-        //eturn tracks;
-        const tracks = await this.tracksRepository
-            .createQueryBuilder("track")
-            .leftJoinAndSelect("track.domains", "domains")
-            .getMany()
+        //Поиск по озону
+        const tracks = await this.tracksRepository.find();
+        //const tracks = await this.tracksRepository
+        //    .createQueryBuilder("track")
+        //    .leftJoinAndSelect("track.domains", "domains")
+        //    .where("domains.domain = :domain", { domain: "ozon.ru" })
+        //    //.where("track.domain.domains.domain = :domain")
+         //   .getMany()
 //
         //const tracks = await this.tracksRepository.find();
         return tracks;

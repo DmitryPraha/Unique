@@ -18,9 +18,9 @@ export class Track {
     @Column({ default: true })
     isActive: boolean;
 
-    //@ManyToMany(() => Domain)
-    //@JoinTable()
-    //domains: Domain[]
+    @ManyToMany(() => Domain)
+    @JoinTable()
+    domains: Domain[][]
     //@ManyToMany(() => Domain, domains => domains.tracks)
     //attendees: Domain[]
 }

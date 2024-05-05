@@ -32,6 +32,7 @@ export class DomainService{
         return domains;
     }
 
+
     async getOne(id: ObjectId): Promise<Domain[]>{
         return await this.domainsRepository.findOneById(id);
     }

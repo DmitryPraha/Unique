@@ -18,38 +18,46 @@ export class TrackService{
         @InjectRepository(Track)
         private trackRepository: Repository<Track>,
         @InjectRepository(Domain)
-        private domainRepository: Repository<Track>,
+        private domainRepository: Repository<Domain[]>,
         private fileService: FileService
     ) {}
 
     //Добавление элемента
-    async create(data: CreateTrackDto): Promise<Domain>
+    async create(data: CreateTrackDto): Promise<Track>
     {
-        const category1 = new Track()
-        category1.domain = "animals"
-        category1.login = "animals"
-        await this.trackRepository.manager.save(category1)
+        //const category1 = new Track()
+        //category1.domain = "animals"
+        //category1.login = "animals"
+        //await this.trackRepository.manager.save(category1)
 
-        const category2 = new Track()
-        category2.domain = "zoo"
-        category2.login = "zoo"
-        await this.trackRepository.manager.save(category2)
+        //const category2 = new Track()
+        //category2.domain = "zoo"
+        //category2.login = "zoo"
+        //await this.trackRepository.manager.save(category2)
 
-        const question = new Domain()
-        question.domain = "dogs"
-        question.tracks = [category1, category2]
-        return this.domainRepository.manager.save(question)
+        //const question = new Domain()
+        //question.domain = "dogs"
+        //question.tracks = [category1, category2]
+        //return this.domainRepository.manager.save(question)
 
-        //const product = new Track();
-        //product.domain = data.domain;
-        //product.password = data.password;
-        //return await this.trackRepository.save(product);
+        const product = new Track();
+        product.domain = data.domain;
+        product.password = data.password;
+        return await this.trackRepository.save(product);
     }
 
 
     //Возвращение всех записей
     async getAll(count = 10 , offset = 0): Promise<Track[][]>{
-        const tracks = await this.tracksRepository.find();
+
+
+        //eturn tracks;
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
         return tracks;
     }
 
@@ -99,17 +107,47 @@ export class TrackService{
             lines.forEach(line => {
                 const [domain, login, password] = line.trim().split(' ');
                 let result = domain.replace('https://', '');
-                //console.log(result)
 
-                if(result == 'zenit.ru')
+               /* let ozon = domain
+                let zenit = domain
+                let cska = domain
+                let resultOzon = ozon.match(/ozon.ru/g);
+                let resultZenit = zenit.match(/zenit.ru/g);
+                let resultCSKA = cska.match(/cska.ru/g);
+
+                if(resultOzon == 'ozon.ru')
                 {
-                    arr.push({domain,login,password})
+                    ozon.push({domain,login,password})
                     //console.log(arr)
                 }
+                if(resultCSKA == 'cska.ru')
+                {
+                    cska.push({domain,login,password})
+                    //console.log(arr)
+                }
+                if(resultZenit == 'zenit.ru')
+                {
+                    zenit.push({domain,login,password})
+                    //console.log(arr)
+                }
+
+                console.log(resultOzon)
+                console.log(resultZenit)
+                console.log(resultCSKA)
+*/
+
+                //console.log(result)
+
+                //if(result == 'zenit.ru')
+                //{
+                //    arr.push({domain,login,password})
+                //console.log(arr)
+                //
                 //let str = "https://ozon.ru/";
                 //let result = str.match(/ozon.ru/g);
-                entities.push({domain,login,password});
+                //entities.push({domain,login,password});
             });
+
             //tracks.forEach((element) =>
             //console.log(domain)
             // );
@@ -124,37 +162,146 @@ export class TrackService{
             //    .forEach(key => console.log(key, arr[key]));
 
 
+            let dom = [];
+
+            let ozon = [];
+            let zenit = [];
+            let cska = [];
+
+
             for (const line of lines) {
                 const [domain, login, password] = line.trim().split(' ');
-                let result = domain.replace('https://', '');
+                //let result = domain.replace('https://', '');
 
+                let ozon = domain
+                let zenit = domain
+                let cska = domain
+                let resultOzon = ozon.match(/ozon.ru/g);
+                let resultZenit = zenit.match(/zenit.ru/g);
+                let resultCSKA = cska.match(/cska.ru/g);
 
-
-
-                if(result == "zenit.ru")
+                if(resultZenit == "zenit.ru")
                 {
-                    console.log(result)
-                    console.log(login)
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(1)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }
+
+                if(resultOzon == "ozon.ru")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(2)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }
+
+                if(resultCSKA == "cska.ru")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(3)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
                 }
 
 
-                let category1 = new Track()
-                category1.domain = "dog"
-                category1.login = "dog"
-                await this.trackRepository.manager.save(category1)
+                /*if(resultOzon == 'ozon.ru')
+                {
+                    ozon.push({domain,login,password})
+                    //console.log(arr)
+                }
+                if(resultCSKA == 'cska.ru')
+                {
+                    cska.push({domain,login,password})
+                    //console.log(arr)
+                }
+                if(resultZenit == 'zenit.ru')
+                {
+                    zenit.push({domain,login,password})
+                    //console.log(arr)
+                }
+
+                console.log(ozon)
+                console.log(zenit)
+                console.log(cska)
+                */
 
 
-                let question = new Domain()
-                question.domain = "dogs"
-                question.tracks = [category1]
-
-                //console.log(question)
-
-                await this.domainRepository.manager.save(question)
 
 
+
+               /* if(result == "zenit.ru")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(1)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }*/
             }
-
             /*for (const line of arr) {
                 //console.log(arr[i])
                 let category1 = new Track()
@@ -168,8 +315,6 @@ export class TrackService{
                 question.tracks = [category1]
                 await this.domainRepository.manager.save(question)
             }*/
-
-
            /* for (var i = 0; i < arr.length; i++)
             {
                 //console.log(arr[i])
@@ -177,15 +322,13 @@ export class TrackService{
                 category1.domain = "dog"
                 category1.login = "dog"
                 await this.trackRepository.manager.save(category1)
-
-
                 let question = new Domain()
                 question.domain = "dogs"
                 question.tracks = [category1]
                 await this.domainRepository.manager.save(question)
             }*/
-
-            return this.trackRepository.save(entities);
+            //Надо убирать это, элементы уже должны быть сохранены
+            return 'Все данные загружены';
         } catch (err) {
             console.error('Ошибка чтения файла:', err);
             return null;

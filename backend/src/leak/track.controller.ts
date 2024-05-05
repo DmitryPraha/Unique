@@ -40,7 +40,7 @@ export class TrackController{
     //}
 
     @Post()
-    async create(@Body() dto: CreateTrackDto): Promise<Domain>{
+    async create(@Body() dto: CreateTrackDto): Promise<Track>{
         return await this.trackService.create(dto)
     }
 

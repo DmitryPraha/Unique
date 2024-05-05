@@ -44,6 +44,22 @@ export class TrackController{
         return await this.trackService.create(dto)
     }
 
+    @Get('getAllOzon')
+    getAllOzon()
+    {
+        return this.trackService.getAllOzon();
+    }
+    @Get('getAllZenit')
+    getAllZenit()
+    {
+        return this.trackService.getAllZenit();
+    }
+    @Get('getAllCSKA')
+    getAllCSKA()
+    {
+        return this.trackService.getAllCSKA();
+    }
+
     @Get()
     getAll(@Query('count') count: number,
            @Query('offset') offset:number){

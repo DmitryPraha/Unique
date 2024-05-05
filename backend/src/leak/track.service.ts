@@ -47,7 +47,42 @@ export class TrackService{
     }
 
 
-    async
+    async getAllOzon(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "ozon.ru" })
+            //.where("track.domain.domains.domain = :domain")
+           .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
+    async getAllZenit(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "zenit.ru" })
+            //.where("track.domain.domains.domain = :domain")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
+    async getAllCSKA(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "cska.ru" })
+            //.where("track.domain.domains.domain = :domain")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
 
     //Возвращение всех записей
     async getAll(count = 10 , offset = 0): Promise<Track[][]>{

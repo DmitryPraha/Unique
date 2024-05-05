@@ -1218,19 +1218,19 @@ export default function Page({
                                             </a>
                                         </li>
                                         <li className="slide">
-                                            <a href="/admin/domain" className="side-menu__item">
+                                            <a href="/admin/add" className="side-menu__item">
                                                 <i className="bx bx-store-alt side-menu__icon"></i>
                                                 <span className="side-menu__label">Домены</span>
                                             </a>
                                         </li>
                                         <li className="slide">
-                                            <a href="/admin/downloadFile" className="side-menu__item">
+                                            <a href="/admin/download" className="side-menu__item">
                                                 <i className="bx bx-file-blank side-menu__icon"></i>
                                                 <span className="side-menu__label">Утечки</span>
                                             </a>
                                         </li>
                                         <li className="slide">
-                                            <a href="/admin/result" className="side-menu__item">
+                                            <a href="/admin/search" className="side-menu__item">
                                                 <i className="bx bx-task side-menu__icon"></i>
                                                 <span className="side-menu__label">Результат</span>
                                             </a>
@@ -1323,7 +1323,7 @@ export default function Page({
                                             </tbody>
                                         </table>
                                     </div>
-                                    <h6>По домену zenit.ru найдено:</h6>
+                                      <h6>По домену zenit.ru найдено:</h6>
                                     <div className="table-responsive">
                                         <table className="table text-nowrap table-bordered">
                                             <thead>
@@ -1459,8 +1459,60 @@ export default function Page({
                     <div id="responsive-overlay"></div>
                 </div>
             </>
+
+            {repo.map(({domain, id, login, password, isActive}) => (
+                <tr>
+                    <th scope="row">
+                        <div className="d-flex align-items-center">
+                            {id}
+                        </div>
+                    </th>
+
+                    <td>{domain}</td>
+                    <td>{login}</td>
+                    <td>{password}</td>
+
+
+                    <td>
+                    </td>
+                </tr>
+            ))}
+
+            {repo1.map(({domain, id, login, password, isActive}) => (
+                <tr>
+                    <th scope="row">
+                        <div className="d-flex align-items-center">
+                            {id}
+                        </div>
+                    </th>
+
+                    <td>{domain}</td>
+                    <td>{login}</td>
+                    <td>{password}</td>
+
+
+                    <td>
+                    </td>
+                </tr>
+            ))}
+
+            {repo3.map(({domain, id, login, password, isActive}) => (
+                <tr>
+                    <th scope="row">
+                        <div className="d-flex align-items-center">
+                            {id}
+                        </div>
+                    </th>
+
+                    <td>{domain}</td>
+                    <td>{login}</td>
+                    <td>{password}</td>
+
+
+                    <td>
+                    </td>
+                </tr>
+            ))}
         </main>
     )
 }
-
-

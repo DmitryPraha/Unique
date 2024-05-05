@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-const baseURL = "http://localhost:4000/data";
+const baseURL = "http://localhost:4000/tracks/getAllOzon";
 
 export default function App() {
 
@@ -17,8 +17,8 @@ export default function App() {
 
     return (
         <div>
-            <h1>{post}</h1>
-            <p>{post.body}</p>
+            <h1></h1>
+            <p>{post}</p>
         </div>
     );
 }

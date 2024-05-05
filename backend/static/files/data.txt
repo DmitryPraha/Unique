@@ -1,4 +1,4 @@
-https://ozon.ru/ myname@gmail.com MyPassword02!
+https://ozon.ru/login/pass myname@gmail.com MyPassword02!
 https://wildberries.ru blablabla@o3.ru admni123
 https://rambler.ru admin.ru admin13
 https://amazon.ru creator.ru timati13
@@ -10,9 +10,9 @@ https://zenit.ru noMoscow.com MaximYoung15
 https://fcTyumen.ru Tyumen.ru lado72
 https://loko.ru chetranovo.ru Pinyaev777
 https://skovorodki.ru kastrulya.ru lozhka777
-https://ozon.ru/ myname@goodle.com MyPassword02!
-https://ozon.ru/ myname@yandex.com Password32!
-https://ozon.ru/ myname@mail.com My42!
+https://ozon.ru/vailit myname@goodle.com MyPassword02!
+https://ozon.ru/resetPass myname@yandex.com Password32!
+https://ozon.ru/@mail myname@mail.com My42!
 https://ozon.ru/ myname@apache.com word32!
 https://ozon.ru/ myname@nginx.com R2D2!
 

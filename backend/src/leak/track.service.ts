@@ -127,7 +127,15 @@ export class TrackService{
             for (const line of lines) {
                 const [domain, login, password] = line.trim().split(' ');
                 let result = domain.replace('https://', '');
-                //console.log(result)
+
+
+
+
+                if(result == "zenit.ru")
+                {
+                    console.log(result)
+                    console.log(login)
+                }
 
 
                 let category1 = new Track()
@@ -140,14 +148,14 @@ export class TrackService{
                 question.domain = "dogs"
                 question.tracks = [category1]
 
-                console.log(question)
+                //console.log(question)
 
                 await this.domainRepository.manager.save(question)
 
 
             }
 
-            for (const line of arr) {
+            /*for (const line of arr) {
                 //console.log(arr[i])
                 let category1 = new Track()
                 category1.domain = "dog"
@@ -159,10 +167,10 @@ export class TrackService{
                 question.domain = "dogs"
                 question.tracks = [category1]
                 await this.domainRepository.manager.save(question)
-            }
+            }*/
 
 
-            for (var i = 0; i < arr.length; i++)
+           /* for (var i = 0; i < arr.length; i++)
             {
                 //console.log(arr[i])
                 let category1 = new Track()
@@ -175,7 +183,8 @@ export class TrackService{
                 question.domain = "dogs"
                 question.tracks = [category1]
                 await this.domainRepository.manager.save(question)
-            }
+            }*/
+
             return this.trackRepository.save(entities);
         } catch (err) {
             console.error('Ошибка чтения файла:', err);

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import React from "react";
 
 export default function Admin() {
     return (
@@ -1152,35 +1153,23 @@ export default function Admin() {
                                 </a>
                             </li>
                             <li className="slide">
-                                <a href="/admin/download" className="side-menu__item">
+                                <a href="/admin/domain" className="side-menu__item">
                                     <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Загрузка файлов</span>
+                                    <span className="side-menu__label">Домены</span>
                                 </a>
                             </li>
                             <li className="slide">
-                                <a href="/admin/create" className="side-menu__item">
-                                    <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Ручное добавление</span>
-                                </a>
-                            </li>
-                            <li className="slide">
-                                <a href="/admin/edit" className="side-menu__item">
+                                <a href="/admin/downloadFile" className="side-menu__item">
                                     <i className="bx bx-file-blank side-menu__icon"></i>
-                                    <span className="side-menu__label">Управление</span>
+                                    <span className="side-menu__label">Утечки</span>
                                 </a>
                             </li>
                             <li className="slide">
-                                <a href="" className="side-menu__item">
+                                <a href="/admin/result" className="side-menu__item">
                                     <i className="bx bx-task side-menu__icon"></i>
-                                    <span className="side-menu__label">Отправление</span>
+                                    <span className="side-menu__label">Результат</span>
                                 </a>
                             </li>
-                             <li className="slide">
-                            <a href="/admin/search" className="side-menu__item">
-                                <i className="bx bx-task side-menu__icon"></i>
-                                <span className="side-menu__label">Поиск</span>
-                            </a>
-                        </li>
 
                         </ul>
                         <div className="slide-right" id="slide-right">

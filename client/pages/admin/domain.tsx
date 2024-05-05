@@ -1,18 +1,54 @@
-import Link from 'next/link';
-import React, { FC } from 'react';
-import { buildServerSideProps } from '@/ssr/buildServerSideProps';
-import {BlogPost} from "@/shared/types/blog-post";
-import { fetch } from '../../shared/utils/fetch';
 import Head from "next/head";
-type TBlogProps = {
-    post: BlogPost;
+import React, {FC, useState} from 'react';
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import {Router, useRouter} from "next/router";
+import {ITrack} from "@/types/track";
+import TrackList from "@/components/TrackList";
+import {useTypedSelector} from "@/hooks/useTypedSelector";
+import {Provider} from "react-redux";
+import TrackItem from "@/components/TrackItem";
+import {NextThunkDispatch, wrapper} from "@/store";
+import {fetchTracks} from "@/store/actions-creators/track";
+import {BlogPost} from "@/shared/types/blog-post";
+import { useFeatures } from '@/hooks/useFeatures'
+import { buildServerSideProps } from '@/ssr/buildServerSideProps';
+import { fetch } from '../../shared/utils/fetch';
+import Link from "next/link";
+import axios from "axios";
+
+type THomeProps = {
+    blogPosts: BlogPost[];
 };
 
-type TBlogQuery = {
-    query: string;
-};
 
-const Blog: FC<TBlogProps> = ({ post = {} }) => {
+const Index: FC<THomeProps> = ({ blogPosts }) => {
+
+    const [data, setData] = useState({
+        domain: "",
+    });
+
+    const router = useRouter()
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setData({
+            ...data,
+            [e.target.name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            domain: data.domain,
+        };
+        //const jsonData = JSON.stringify(userData);
+        axios.post("http://localhost:4000/domain", userData).then(resp => router.push('/admin/domain')).catch(e => console.log(e));
+
+    };
+
     return (
         <>
             <Head>
@@ -30,6 +66,9 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div>
+
+
+
                 <div className="offcanvas offcanvas-end" tabIndex="-1" id="switcher-canvas"
                      aria-labelledby="offcanvasRightLabel">
                     <div className="offcanvas-header border-bottom">
@@ -546,21 +585,24 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                     <header className="app-header">
 
                         <div className="main-header-container container-fluid">
+
+
                             <div className="header-content-left">
+
                                 <div className="header-element">
                                     <div className="horizontal-logo">
                                         <a href="" className="header-logo">
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-logo.png" alt="logo"
                                                  className="desktop-logo"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/toggle-logo.png" alt="logo"
                                                  className="toggle-logo"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-dark.png" alt="logo"
                                                  className="desktop-dark"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/toggle-dark.png" alt="logo"
                                                  className="toggle-dark"/>
-                                            <img src="/images/logo1.png" alt="logo"
+                                            <img src="/images/brand-logos/desktop-white.png" alt="logo"
                                                  className="desktop-white"/>
-                                            <img src="/images/logo1.png"
+                                            <img src="/images/brand-logos/toggle-white.png"
                                                  alt="logo" className="toggle-white"/>
                                         </a>
                                     </div>
@@ -1093,6 +1135,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                             </div>
                                         </div>
                                     </a>
+
                                     <ul className="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
                                         aria-labelledby="mainHeaderProfile">
                                         <li><a className="dropdown-item d-flex" href="profile.html"><i
@@ -1112,10 +1155,17 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                             className="ti ti-logout fs-18 me-2 op-7"></i>Log Out</a></li>
                                     </ul>
                                 </div>
+
                                 <div className="header-element">
+
                                 </div>
+
+
                             </div>
+
+
                         </div>
+
                     </header>
 
                     <aside className="app-sidebar sticky" id="sidebar">
@@ -1153,19 +1203,19 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                         </a>
                                     </li>
                                     <li className="slide">
-                                        <a href="/admin/add" className="side-menu__item">
+                                        <a href="/admin/domain" className="side-menu__item">
                                             <i className="bx bx-store-alt side-menu__icon"></i>
                                             <span className="side-menu__label">Домены</span>
                                         </a>
                                     </li>
                                     <li className="slide">
-                                        <a href="/admin/download" className="side-menu__item">
+                                        <a href="/admin/downloadFile" className="side-menu__item">
                                             <i className="bx bx-file-blank side-menu__icon"></i>
                                             <span className="side-menu__label">Утечки</span>
                                         </a>
                                     </li>
                                     <li className="slide">
-                                        <a href="/admin/search" className="side-menu__item">
+                                        <a href="/admin/result" className="side-menu__item">
                                             <i className="bx bx-task side-menu__icon"></i>
                                             <span className="side-menu__label">Результат</span>
                                         </a>
@@ -1197,35 +1247,73 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                             </div>
                             <div className="row">
 
+                                <div className="col-xl-12">
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="card custom-card">
+                                            <div className="card-body add-products p-0">
+                                                <div className="p-4">
+                                                    <div className="row gx-5">
+                                                        <div className="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
+                                                            <div className="card custom-card shadow-none mb-0 border-0">
+                                                                <div className="card-body p-0">
+                                                                    <div className="row gy-3">
+                                                                        <div className="col-xl-12">
+                                                                            <label htmlFor="product-name-add"
+                                                                                   className="form-label">Домен</label>
+                                                                            <input type="text" className="form-control"
+                                                                                   id="product-name-add" placeholder=""
+                                                                                   name="domain"
+                                                                                   value={data.domain}
+                                                                                   onChange={handleChange}
+                                                                            />
+                                                                            <label htmlFor="product-name-add"
+                                                                                   className="form-label mt-1 fs-12 op-5 text-muted mb-0"></label>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
+                                                    <button className="btn btn-success-light m-1" type="submit">Сохранить<i
+                                                        className="bi bi-download ms-2"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+
+                                </div>
+
                                 <div className="table-responsive">
                                     <table className="table text-nowrap table-bordered">
                                         <thead>
                                         <tr>
                                             <th scope="col">Id</th>
-                                            <th scope="col">Логин</th>
                                             <th scope="col">Домен</th>
-                                            <th scope="col">Пароль</th>
-                                            <th scope="col">Действие</th>
-
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {post.map(({ domain, id,login,password,isActive }) => (
+                                        {blogPosts.map(({ domain, id,login,password,isActive }) => (
                                             <tr>
                                                 <th scope="row">
                                                     <div className="d-flex align-items-center">
                                                         {id}
                                                     </div>
                                                 </th>
-                                                <td>{login}</td>
                                                 <td>{domain}</td>
-                                                <td>{password}</td>
                                                 <td>
                                                     <div className="hstack gap-2 flex-wrap">
 
                                                         <Link href={`/admin/${id}`}><i
                                                             className="ri-edit-line"></i></Link>
-                                                        <a href="javascript:void(0);" className="text-danger fs-14 lh-1"><i
+                                                        <a href="" className="text-danger fs-14 lh-1"><i
                                                             className="ri-delete-bin-5-line"></i></a>
                                                     </div>
                                                 </td>
@@ -1235,6 +1323,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="searchModal" aria-hidden="true">
@@ -1331,14 +1420,10 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
     );
 };
 
-export const getServerSideProps = buildServerSideProps<TBlogProps, TBlogQuery>(
-    async (ctx) => {
-        const query = ctx.query.query;
-        console.log(query)
-        const post = await fetch(`/tracks/search?query=${query}`);
+export default Index;
 
-        return { post };
-    },
-);
 
-export default Blog;
+export const getServerSideProps = buildServerSideProps<THomeProps>(async () => {
+    const blogPosts = await fetch('/domain/');
+    return { blogPosts};
+});

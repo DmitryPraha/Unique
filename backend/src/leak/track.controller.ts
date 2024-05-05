@@ -16,6 +16,7 @@ import {Track} from "./entities/track.entity";
 import {AnyFilesInterceptor, FileInterceptor, MulterModule} from "@nestjs/platform-express";
 import { diskStorage } from 'multer'
 import { extname } from 'path'
+import {Domain} from "../domain/entities/domain.entity";
 
 const storage = diskStorage({
     destination: './static/files/',
@@ -33,9 +34,48 @@ export class TrackController{
 
     constructor(private trackService: TrackService) {}
 
+    //@Post()
+    //  async create(@Body() dto: CreateTrackDto): Promise<Domain>{
+    //    return await this.trackService.create(dto)
+    //}
+
     @Post()
-      async create(@Body() dto: CreateTrackDto): Promise<Track>{
+    async create(@Body() dto: CreateTrackDto): Promise<Track>{
         return await this.trackService.create(dto)
+    }
+
+    @Get('getAllAmazon')
+    getAllAmazon()
+    {
+        return this.trackService.getAllAmazon();
+    }
+
+    @Get('getAllWildberries')
+    getAllWildberries()
+    {
+        return this.trackService.getAllWildberries();
+    }
+
+    @Get('getAllRambler')
+    getAllRambler()
+    {
+        return this.trackService.getAllRambler();
+    }
+
+    @Get('getAllOzon')
+    getAllOzon()
+    {
+        return this.trackService.getAllOzon();
+    }
+    @Get('getAllZenit')
+    getAllZenit()
+    {
+        return this.trackService.getAllZenit();
+    }
+    @Get('getAllCSKA')
+    getAllCSKA()
+    {
+        return this.trackService.getAllCSKA();
     }
 
     @Get()
@@ -74,15 +114,8 @@ export class TrackController{
     uploadFile(@UploadedFiles() files) {
         //console.log(files);
         //return { message: 'File uploaded successfully!', filename: files.filename };
-        return this.trackService.filesFunction(files);
+        return this.trackService.filesFunction(files)
         //console.log(files);
     }
-
-    //@Post('upload')
-    //@UseInterceptors(AnyFilesInterceptor())
-    //uploadFile(@UploadedFiles() files) {
-    //    return this.trackService.filesFunction(files);
-    //    //console.log(files);
-    //}
 
 }

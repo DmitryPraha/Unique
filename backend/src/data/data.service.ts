@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDatumDto } from './dto/create-datum.dto';
 import { UpdateDatumDto } from './dto/update-datum.dto';
+import * as fs from "fs";
 
 @Injectable()
 export class DataService {
@@ -9,7 +10,15 @@ export class DataService {
   }
 
   findAll() {
-    return `This action returns all data`;
+    const dirPath = './static/files/';
+
+    const entities = [];
+
+
+    const files = fs.readdirSync(dirPath).map(fileName => `${fileName}`);
+    entities.push(files);
+    console.log(files.join('\n'));
+    return entities;
   }
 
   findOne(id: number) {

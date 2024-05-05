@@ -9,7 +9,6 @@ import {Button, Grid, TextField} from "@mui/material";
 const App = () => {
     const [data, setData] = useState({
         domain: "",
-        password: ""
     });
 
     const router = useRouter()
@@ -26,10 +25,9 @@ const App = () => {
         e.preventDefault();
         const userData = {
             domain: data.domain,
-            password: data.password
         };
         //const jsonData = JSON.stringify(userData);
-        axios.post("http://localhost:4000/tracks", userData).then(resp => router.push('/admin')).catch(e => console.log(e));
+        axios.post("http://localhost:4000/domain", userData).then(resp => router.push('/admin')).catch(e => console.log(e));
 
     };
 
@@ -1184,33 +1182,21 @@ const App = () => {
                                         </a>
                                     </li>
                                     <li className="slide">
+                                        <a href="/admin/add" className="side-menu__item">
+                                            <i className="bx bx-store-alt side-menu__icon"></i>
+                                            <span className="side-menu__label">Домены</span>
+                                        </a>
+                                    </li>
+                                    <li className="slide">
                                         <a href="/admin/download" className="side-menu__item">
-                                            <i className="bx bx-store-alt side-menu__icon"></i>
-                                            <span className="side-menu__label">Загрузка файлов</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="/admin/create" className="side-menu__item">
-                                            <i className="bx bx-store-alt side-menu__icon"></i>
-                                            <span className="side-menu__label">Ручное добавление</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="/admin/edit" className="side-menu__item">
                                             <i className="bx bx-file-blank side-menu__icon"></i>
-                                            <span className="side-menu__label">Управление</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="" className="side-menu__item">
-                                            <i className="bx bx-task side-menu__icon"></i>
-                                            <span className="side-menu__label">Отправление</span>
+                                            <span className="side-menu__label">Утечки</span>
                                         </a>
                                     </li>
                                     <li className="slide">
                                         <a href="/admin/search" className="side-menu__item">
                                             <i className="bx bx-task side-menu__icon"></i>
-                                            <span className="side-menu__label">Поиск</span>
+                                            <span className="side-menu__label">Результат</span>
                                         </a>
                                     </li>
 
@@ -1270,25 +1256,7 @@ const App = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
-                                                            <div className="card custom-card shadow-none mb-0 border-0">
-                                                                <div className="card-body p-0">
-                                                                    <div className="row gy-4">
-                                                                        <div className="col-xl-12">
-                                                                            <label htmlFor="product-actual-price"
-                                                                                   className="form-label">Пароль</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="product-actual-price"
-                                                                                   placeholder=""
-                                                                                   name="password"
-                                                                                   value={data.password}
-                                                                                   onChange={handleChange}
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                                 <div

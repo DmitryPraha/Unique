@@ -1,11 +1,11 @@
 import {Module} from "@nestjs/common";
-import {TrackModule} from "./track/track.module";
+import {TrackModule} from "./leak/track.module";
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {Track} from "./track/entities/track.entity";
+import {Track} from "./leak/entities/track.entity";
 import {ServeStaticModule} from "@nestjs/serve-static";
-import { join } from 'path';
 import { DataModule } from './data/data.module';
-import * as path from 'path';
+import {Domain} from "./domain/entities/domain.entity";
+import {DomainModule} from "./domain/domain.module";
 
 @Module({
     imports: [TrackModule,
@@ -18,11 +18,11 @@ import * as path from 'path';
             port: 3306,
             username: 'root',
             password: 'root',
-            database: 'findler',
-            entities: [Track],
+            database: 'f',
+            entities: [Track, Domain],
             synchronize: true,
         }),
-        DataModule,
+        DataModule,DomainModule
     ]
 
 })

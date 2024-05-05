@@ -1,9 +1,9 @@
 import Head from "next/head";
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import {Router} from "next/router";
+import {Router, useRouter} from "next/router";
 import {ITrack} from "@/types/track";
 import TrackList from "@/components/TrackList";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
@@ -1180,33 +1180,21 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                         </a>
                                     </li>
                                     <li className="slide">
+                                        <a href="/admin/add" className="side-menu__item">
+                                            <i className="bx bx-store-alt side-menu__icon"></i>
+                                            <span className="side-menu__label">Домены</span>
+                                        </a>
+                                    </li>
+                                    <li className="slide">
                                         <a href="/admin/download" className="side-menu__item">
-                                            <i className="bx bx-store-alt side-menu__icon"></i>
-                                            <span className="side-menu__label">Загрузка файлов</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="/admin/create" className="side-menu__item">
-                                            <i className="bx bx-store-alt side-menu__icon"></i>
-                                            <span className="side-menu__label">Ручное добавление</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="/admin/edit" className="side-menu__item">
                                             <i className="bx bx-file-blank side-menu__icon"></i>
-                                            <span className="side-menu__label">Управление</span>
-                                        </a>
-                                    </li>
-                                    <li className="slide">
-                                        <a href="" className="side-menu__item">
-                                            <i className="bx bx-task side-menu__icon"></i>
-                                            <span className="side-menu__label">Отправление</span>
+                                            <span className="side-menu__label">Утечки</span>
                                         </a>
                                     </li>
                                     <li className="slide">
                                         <a href="/admin/search" className="side-menu__item">
                                             <i className="bx bx-task side-menu__icon"></i>
-                                            <span className="side-menu__label">Поиск</span>
+                                            <span className="side-menu__label">Результат</span>
                                         </a>
                                     </li>
 

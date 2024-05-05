@@ -1164,33 +1164,21 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                 </a>
                             </li>
                             <li className="slide">
+                                <a href="/admin/add" className="side-menu__item">
+                                    <i className="bx bx-store-alt side-menu__icon"></i>
+                                    <span className="side-menu__label">Домены</span>
+                                </a>
+                            </li>
+                            <li className="slide">
                                 <a href="/admin/download" className="side-menu__item">
-                                    <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Загрузка файлов</span>
-                                </a>
-                            </li>
-                            <li className="slide">
-                                <a href="/admin/create" className="side-menu__item">
-                                    <i className="bx bx-store-alt side-menu__icon"></i>
-                                    <span className="side-menu__label">Ручное добавление</span>
-                                </a>
-                            </li>
-                            <li className="slide">
-                                <a href="/admin/edit" className="side-menu__item">
                                     <i className="bx bx-file-blank side-menu__icon"></i>
-                                    <span className="side-menu__label">Управление</span>
-                                </a>
-                            </li>
-                            <li className="slide">
-                                <a href="" className="side-menu__item">
-                                    <i className="bx bx-task side-menu__icon"></i>
-                                    <span className="side-menu__label">Отправление</span>
+                                    <span className="side-menu__label">Утечки</span>
                                 </a>
                             </li>
                             <li className="slide">
                                 <a href="/admin/search" className="side-menu__item">
                                     <i className="bx bx-task side-menu__icon"></i>
-                                    <span className="side-menu__label">Поиск</span>
+                                    <span className="side-menu__label">Результат</span>
                                 </a>
                             </li>
 
@@ -1222,7 +1210,7 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
 
 
                         <div className="mb-4">
-                            <p className="fs-15 fw-semibold mb-2">Product Details :</p>
+                            <p className="fs-15 fw-semibold mb-2">Подробнее :</p>
                             <div className="row">
                                 <div className="col-xl-10">
                                     <div className="table-responsive">
@@ -1240,22 +1228,6 @@ const Blog: FC<TBlogProps> = ({ post = {} }) => {
                                                 </th>
                                                 <td>
                                                     {post.domain}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" className="fw-semibold">
-                                                    Пароль
-                                                </th>
-                                                <td>
-                                                    {post.password}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" className="fw-semibold">
-                                                    Пользователь
-                                                </th>
-                                                <td>
-                                                    Пока в разработке
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -1365,7 +1337,7 @@ export const getServerSideProps = buildServerSideProps<TBlogProps, TBlogQuery>(
     async (ctx) => {
         const id = ctx.query.id;
 
-        const post = await fetch(`/tracks/${id}`);
+        const post = await fetch(`/domain/${id}`);
 
         return { post };
     },

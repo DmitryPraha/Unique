@@ -17,13 +17,24 @@ export const getServerSideProps = (async () => {
 
     const zenit = await fetch('http://localhost:4000/tracks/getAllZenit')
     const repo3 = await zenit.json()
+
+    //const repo4 = ''
+    const rambler = await fetch('http://localhost:4000/tracks/getAllRambler')
+    const repo4 = await rambler.json()
+
+    const amazon = await fetch('http://localhost:4000/tracks/getAllAmazon')
+    const repo5 = await amazon.json()
+
+    const wild = await fetch('http://localhost:4000/tracks/getAllWildberries')
+    const repo6 = await wild.json()
+
     //const repo: Repo = await res.json()
     // Pass data to the page via props
-    return { props: { repo, repo1, repo3  } }
-}) satisfies GetServerSideProps<{ repo: [], repo1:[], repo3:[] }>
+    return { props: { repo, repo1, repo3, repo4, repo5, repo6  } }
+}) satisfies GetServerSideProps<{ repo: [], repo1:[], repo3:[], repo4:[], repo5:[], repo6:[] }>
 
 export default function Page({
-                                 repo, repo1,repo3
+                                 repo, repo1,repo3,repo4, repo5, repo6
                              }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
 
@@ -1336,6 +1347,65 @@ export default function Page({
                                             </thead>
                                             <tbody>
                                             {repo3.map(({domain, id, login, password, isActive}) => (
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div className="d-flex align-items-center">
+                                                            {id}
+                                                        </div>
+                                                    </th>
+
+                                                    <td>{domain}</td>
+                                                    <td>{login}</td>
+                                                    <td>{password}</td>
+
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <h6>По домену rambler.ru найдено:</h6>
+                                    <div className="table-responsive">
+                                        <table className="table text-nowrap table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">URL</th>
+                                                <th scope="col">Домен</th>
+                                                <th scope="col">Пароль</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {repo4.map(({domain, id, login, password, isActive}) => (
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div className="d-flex align-items-center">
+                                                            {id}
+                                                        </div>
+                                                    </th>
+
+                                                    <td>{domain}</td>
+                                                    <td>{login}</td>
+                                                    <td>{password}</td>
+
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <h6>По домену amazon.com найдено:</h6>
+                                    <div className="table-responsive">
+                                        <table className="table text-nowrap table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">URL</th>
+                                                <th scope="col">Домен</th>
+                                                <th scope="col">Пароль</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {repo5.map(({domain, id, login, password, isActive}) => (
                                                 <tr>
                                                     <th scope="row">
                                                         <div className="d-flex align-items-center">

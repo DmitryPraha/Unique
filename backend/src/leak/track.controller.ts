@@ -44,6 +44,24 @@ export class TrackController{
         return await this.trackService.create(dto)
     }
 
+    @Get('getAllAmazon')
+    getAllAmazon()
+    {
+        return this.trackService.getAllAmazon();
+    }
+
+    @Get('getAllWildberries')
+    getAllWildberries()
+    {
+        return this.trackService.getAllWildberries();
+    }
+
+    @Get('getAllRambler')
+    getAllRambler()
+    {
+        return this.trackService.getAllRambler();
+    }
+
     @Get('getAllOzon')
     getAllOzon()
     {

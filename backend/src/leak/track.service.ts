@@ -46,6 +46,44 @@ export class TrackService{
         return await this.trackRepository.save(product);
     }
 
+    async getAllAmazon(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "amazon.com" })
+            //.where("track.domain.domains.domain = :domain")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
+
+    async getAllWildberries(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "wildberries.ru" })
+            //.where("track.domain.domains.domain = :domain")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
+
+    async getAllRambler(count = 10 , offset = 0): Promise<Track[][]>{
+        //Поиск по озону
+        const tracks = await this.tracksRepository
+            .createQueryBuilder("track")
+            .leftJoinAndSelect("track.domains", "domains")
+            .where("domains.domain = :domain", { domain: "rambler.ru" })
+            //.where("track.domain.domains.domain = :domain")
+            .getMany()
+//
+        //const tracks = await this.tracksRepository.find();
+        return tracks;
+    }
 
     async getAllOzon(count = 10 , offset = 0): Promise<Track[][]>{
         //Поиск по озону
@@ -85,9 +123,13 @@ export class TrackService{
     }
 
     //Возвращение всех записей
-    async getAll(count = 10 , offset = 0): Promise<Track[][]>{
+    async getAll(count = 10 , offset = 0): Promise<Track[]>{
         //Поиск по озону
-        const tracks = await this.tracksRepository.find();
+        const tracks = await this.trackRepository.find({
+            order: {
+                id: "DESC",
+            },
+        });
         //const tracks = await this.tracksRepository
         //    .createQueryBuilder("track")
         //    .leftJoinAndSelect("track.domains", "domains")
@@ -214,9 +256,91 @@ export class TrackService{
                 let ozon = domain
                 let zenit = domain
                 let cska = domain
+
+                let rambler = domain
+                let wildberries = domain
+                let amazon = domain
+
                 let resultOzon = ozon.match(/ozon.ru/g);
                 let resultZenit = zenit.match(/zenit.ru/g);
                 let resultCSKA = cska.match(/cska.ru/g);
+
+                let resultRambler = rambler.match(/rambler.ru/g);
+                let resultWildberries = wildberries.match(/wildberries.ru/g);
+                let resultAmazon = amazon.match(/amazon.com/g);
+
+                if(resultAmazon == "amazon.com")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(6)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }
+
+                if(resultWildberries == "wildberries.ru")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(5)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }
+
+
+                if(resultRambler == "rambler.ru")
+                {
+                    //console.log(result)
+                    //console.log(login)
+                    let zenit = await this.domainRepository.findOneById(4)
+                    //console.log(zenit)
+                    //console.log(zenit)
+                    //arr.push(zenit)
+                    //console.log(zenit)
+                    //dom.push(zenit)
+                    //let question = new Domain()
+                    //question.domain = "dogs"
+                    //question.tracks = [category1]
+                    let category1 = new Track()
+                    category1.domain = domain
+                    category1.login = login
+                    category1.password = password
+                    category1.domains = [zenit]
+                    //console.log(category1)
+                    await this.trackRepository.manager.save(category1)
+                    //console.log(question)
+                    //await this.domainRepository.manager.save(question)
+                }
 
                 if(resultZenit == "zenit.ru")
                 {

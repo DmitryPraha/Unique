@@ -90,7 +90,7 @@ export default function Home() {
                                    </div>
                                    <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-4">
                                        <div className="text-end landing-main-image landing-heading-img">
-                                           <img src="/images/logo1.png" alt="" className="img-fluid"/>
+                                           <img src="/images/logo1.png" alt="" className="img-fluid img_main"/>
                                        </div>
                                    </div>
                                </div>

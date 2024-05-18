@@ -1279,7 +1279,7 @@ const Index: FC<THomeProps> = ({ blogPosts }) => {
                                                 </div>
                                                 <div
                                                     className="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
-                                                    <button className="btn btn-success-light m-1" type="submit">Сохранить<i
+                                                    <button className="btn btn-success-light m-1" type="submit">Добавить<i
                                                         className="bi bi-download ms-2"></i></button>
                                                 </div>
                                             </div>

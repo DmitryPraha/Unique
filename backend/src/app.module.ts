@@ -18,7 +18,7 @@ import {DomainModule} from "./domain/domain.module";
             port: 3306,
             username: 'root',
             password: 'root',
-            database: 'f',
+            database: 'def',
             entities: [Track, Domain],
             synchronize: true,
         }),
